@@ -1,0 +1,83 @@
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+DerivedData/
+.swiftpm/config/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+**/.idea/**
+
+# Swift Package Manager 관련 파일
+/.build/
+/.swiftpm/
+
+# Xcode 프로젝트 관련 파일
+xcuserdata/
+DerivedData/
+*.xcworkspace
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/*.pbxuser
+*.xcodeproj/*.mode1v3
+*.xcodeproj/*.mode2v3
+*.xcodeproj/*.perspectivev3
+
+# macOS 관련 시스템 파일
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 특정 에디터 관련 파일
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Swift Playgrounds
+timeline.xctimeline
+playground.xcworkspace/
+
+# Carthage (SPM을 대체할 수도 있는 종속성 관리 도구)
+/Carthage/Checkouts/
+/Carthage/Build/
+
+# CocoaPods 관련 파일 (SPM 사용 시 필요 없지만, 혼용 시 무시 가능)
+Pods/
+Podfile.lock
+
+# Fastlane 관련 파일 (빌드 자동화 도구 사용 시)
+/fastlane/report.xml
+/fastlane/Preview.html
+/fastlane/screenshots/
+
+build
+
+# Created by https://www.toptal.com/developers/gitignore/api/swiftpm,swiftpackagemanager
+# Edit at https://www.toptal.com/developers/gitignore?templates=swiftpm,swiftpackagemanager
+
+### SwiftPackageManager ###
+Packages
+.build/
+xcuserdata
+DerivedData/
+*.xcodeproj
+
+
+### SwiftPM ###
+
+
+# End of https://www.toptal.com/developers/gitignore/api/swiftpm,swiftpackagemanager
+
+.xcode.env
+.xcode.env.local
+
+package-lock.json
+create_project.rb
+node_modules
+Pods-*/*
+output/**
+output.json
+Frameworks/**
