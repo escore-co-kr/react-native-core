@@ -1,5 +1,5 @@
 // info.swift
 
 public struct ReactNativePrebuild {
-    public static let 0.77.1 = "RN_VERSION" 
+    public static let RN_VERSION = "0.77.1"
 }
