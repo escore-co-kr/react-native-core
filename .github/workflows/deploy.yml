@@ -184,9 +184,7 @@ jobs:
 
       - name: Remove Tag if Exists
         run: |
-          CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-
-          if git rev-parse "refs/tags/${{ env.CURRENT_BRANCH }}" >/dev/null 2>&1; then
+          if git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1; then
             echo "🔄 Tag ${{ env.RN_VERSION }} already exists. delete..."
             git tag -d ${{ env.RN_VERSION }}
             git push origin :refs/tags/${{ env.RN_VERSION }}
