@@ -182,24 +182,22 @@ jobs:
         run: |
           git push
 
-      # - name: Tag
-      #   run: |
-      #     CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+      - name: Remove Tag if Exists
+        run: |
+          CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-      #     if git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1; then
-      #       echo "🔄 Tag ${{ env.RN_VERSION }} already exists. Recreating..."
-      #       git tag -d ${{ env.RN_VERSION }}
-      #       git push origin :refs/tags/${{ env.RN_VERSION }}
-      #     fi
-      #     git tag ${{ env.RN_VERSION }}
-      #     git push origin ${{ env.RN_VERSION }}
+          if git rev-parse "refs/tags/${{ env.CURRENT_BRANCH }}" >/dev/null 2>&1; then
+            echo "🔄 Tag ${{ env.RN_VERSION }} already exists. delete..."
+            git tag -d ${{ env.RN_VERSION }}
+            git push origin :refs/tags/${{ env.RN_VERSION }}
+          fi
 
       - name: Create or Update Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.RN_VERSION }}
           name: "Release RN ${{ env.RN_VERSION }}" 
-          body: ${{ github.workspace }}/README.md
+          body_path: ${{ github.workspace }}/README.md
           # files: output/**  # output 폴더의 모든 파일 업로드
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
