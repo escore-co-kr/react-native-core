@@ -91,7 +91,7 @@ jobs:
       - name: Generate Project Sources
         run: |
           mkdir ios/Sources
-          cp -R .scripts/Sources ios/Sources
+          cp -R .scripts/Sources ios
           ls -la ios/Sources
           node -e "
             const fs = require('fs'); 
