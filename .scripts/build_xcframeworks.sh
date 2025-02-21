@@ -14,7 +14,7 @@ function archive() {
     -configuration $1 \
     -sdk iphonesimulator \
     -quiet \
-    SKIP_INSTALL=NO
+    SKIP_INSTALL=NO || exit 1;
   xcodebuild archive \
     -workspace $WORKSPACE.xcworkspace \
     -scheme $PROJECT \
@@ -22,7 +22,7 @@ function archive() {
     -configuration $1 \
     -sdk iphoneos \
     -quiet \
-    SKIP_INSTALL=NO
+    SKIP_INSTALL=NO || exit 1;
 }
 
 function create_xcframework() {
@@ -54,10 +54,17 @@ function clean() {
 function build_and_create_frameworks() {
     local configuration="Release"
     rm -rf build
+    echo "INSTALL: NPM"
     npm i
+    echo "INSTALL: pod"
     npx pod-install # pod install
-    archive $configuration
+    echo "BUILD: SWIFT Build Test"
+    swift build || exit 1
+    echo "BUILD: Archive"
+    archive $configuration || exit 1;
+    echo "BUILD: xcframework"
     create_xcframework
+    echo "CLEAN UP: Done"
     clean
 }
 
@@ -70,5 +77,6 @@ function initDirectory() {
 }
 
 initDirectory
-build_and_create_frameworks 
-ruby ./generate_package_swift.rb
+node ./write_package_swift.js # create empty
+build_and_create_frameworks || exit 1;
+node ./write_package_swift.js

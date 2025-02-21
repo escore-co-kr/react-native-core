@@ -56,7 +56,7 @@ jobs:
             project.new_target(:application, '${{ env.PROJECT }}', :ios)
             project.save" > ios/create_project.rb
 
-          cp .scripts/generate_package_swift.rb ios/generate_package_swift.rb
+          cp .scripts/write_package_swift.js ios/write_package_swift.js
           cp .scripts/build_xcframeworks.sh ios/build_xcframeworks.sh
           chmod +x ios/build_xcframeworks.sh
           node -e "
