@@ -41,7 +41,7 @@ ${sources.map(name => `                "${name}"`).join(",\n")}
                 .linkedFramework("JavaScriptCore", .when(platforms: [.iOS])),
             ]
         ),
-${frameworks.map(name => `        binaryTarget(
+${frameworks.map(name => `        .binaryTarget(
             name: "${name}",
             path: "Frameworks/${name}.xcframework"
         )`).join(",\n")}
