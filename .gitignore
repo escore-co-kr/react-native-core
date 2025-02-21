@@ -81,3 +81,7 @@ Pods-*/*
 output/**
 output.json
 Frameworks/**
+build_xcframeworks.sh
+generate_package_swift.rb
+Podfile
+ios/*

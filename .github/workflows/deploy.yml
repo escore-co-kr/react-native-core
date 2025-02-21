@@ -1,0 +1,205 @@
+name: Build Framework
+
+run-name: Build Framework ${{ github.ref_name }} by @${{ github.actor }}
+
+on:
+  push:
+    branches: ["main"] 
+  # workflow_dispatch:  # 🔑 GitHub UI에서 수동 실행 가능
+    # inputs:
+    #   build_type:
+    #     description: 'Build Type (Debug/Release)'
+    #     required: true
+    #     default: 'Debug'
+
+env:
+  AWS_REGION: ap-northeast-2
+  AWS_ROLE_NAME: ${{ secrets.AWS_ROLE_NAME }}
+  DOMAIN: ${{ vars.DOMAIN }} # 라이브러리 올릴 CDN
+  DOMAIN_PATH: "internal/ios/rn"
+  PROJECT: "ReactNativePrebuild"
+
+concurrency:
+  group: ${{ github.ref }}-deploy
+  cancel-in-progress: false
+
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: write    # This is required for actions/checkout
+
+jobs:
+  build:
+    runs-on: macos-14
+    environment:
+      name: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 23
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_NAME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Gem xcodeproj
+        run: |
+          gem install --user-install xcodeproj
+          mkdir ios
+
+      - name: Setup Project Script
+        run: |
+          echo "require 'xcodeproj'
+            project = Xcodeproj::Project.new('${{ env.PROJECT }}.xcodeproj')
+            project.new_target(:application, '${{ env.PROJECT }}', :ios)
+            project.save" > ios/create_project.rb
+
+          cp .scripts/generate_package_swift.rb ios/generate_package_swift.rb
+          cp .scripts/build_xcframeworks.sh ios/build_xcframeworks.sh
+          chmod +x ios/build_xcframeworks.sh
+          node -e "
+            const fs = require('fs'); 
+            let pod = fs.readFileSync('.scripts/Podfile', 'utf-8');
+            pod = pod.replace('PROJECT', '${{ env.PROJECT }}');
+            fs.writeFileSync('ios/Podfile', pod);
+          "
+      - name: ENV Set
+        id: set_env
+        run: |
+          HASH=$(git rev-parse --short HEAD)
+          DATE=$(TZ=Asia/Seoul date "+%Y-%m-%d %H:%M")
+          RN_VERSION=$(node -e "
+            const fs = require('fs'); 
+            const p = fs.readFileSync('package.json', 'utf-8');
+            const package = JSON.parse(p);
+            console.log(package.dependencies['react-native'].replace(/[^0-9.]/g, ''));
+          ")
+          
+          echo "RN_VERSION=${RN_VERSION}" >> $GITHUB_ENV
+          echo "TAG_NAME=${HASH}" >> $GITHUB_ENV
+          # echo "::set-output name=TAG_NAME::${HASH}"
+          echo "TAG_NAME=${HASH}" >> $GITHUB_OUTPUT
+          echo "BUILD_DATE=${DATE}" >> $GITHUB_ENV
+          echo "$GITHUB_CONTEXT"
+
+      - name: Create Xcode Project
+        run: ruby create_project.rb
+        working-directory: ios
+
+      - name: Build Frameworks
+        run: ./build_xcframeworks.sh
+        working-directory: ios
+
+      - name: Zip Frameworks
+        run: |
+          npm i --save-dev archiver
+          node .scripts/zip_xcframework.js
+          node .scripts/prepare_upload.js
+          npm r archiver
+      - name: Generate README.md
+        run: |
+          node .scripts/write_readme.js
+        
+      - name: Find AWS CloudFront Distribution
+        run: |
+          OUTPUT=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,domain:Aliases.Items[0],bucket:Origins.Items[0].DomainName}[?domain=='${DOMAIN}']"  --output text)
+          ID=$(echo $OUTPUT | awk '{print $3}')
+          BUCKET=$(echo $OUTPUT | awk '{print $1}')
+          BUCKET=$(node -e "const [, bucket] = \"${BUCKET}\".match(/^(.+)\.s3\.(.+)\.amazonaws.com$/); console.log(bucket);")
+          echo "DISTRIBUTION_ID=${ID}" >> $GITHUB_ENV
+          echo "S3_BUCKET=${BUCKET}" >> $GITHUB_ENV
+
+      - name: Sync S3 Bucket
+        run: |
+          aws s3 sync output s3://${{ env.S3_BUCKET }}/${{ env.DOMAIN_PATH}}
+        working-directory: ios
+      
+      - name: Copy Results
+        run: |
+          mkdir artifact
+          cp ios/Package.swift artifact/Package.swift
+          cp -R ios/Sources artifact/Sources
+          cp README.md artifact/README.md
+          cp package.json artifact/package.json
+      
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: artifact/*
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/checkout@v4
+    
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: output/
+
+      - name: Export React Native Version
+        run: |
+          RN_VERSION=$(node -e "
+            const fs = require('fs'); 
+            const p = fs.readFileSync('output/package.json', 'utf-8');
+            const package = JSON.parse(p);
+            console.log(package.dependencies['react-native'].replace(/[^0-9.]/g, ''));
+          ")
+          echo "RN_VERSION=${RN_VERSION}" >> $GITHUB_ENV
+
+          HASH=$(git rev-parse --short HEAD)
+          echo "HASH=${HASH}" >> $GITHUB_ENV
+
+          echo "$GITHUB_CONTEXT"
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Apply output
+        run: |
+          cp -R output/* .
+          rm -rf output
+          
+          ls -la
+
+      - name: Commit
+        run: |
+          # 🔑 빌드 결과 커밋 (예시: 빌드 아티팩트 추가)
+          git add Package.swift package.json Sources README.md # 원하는 파일만 추가
+          git commit -m "🚀 Release version ${{ env.RN_VERSION }} <- ${{ env.HASH }}" || echo "✅ No changes to commit"
+
+      - name: Push
+        run: |
+          git push
+
+      # - name: Tag
+      #   run: |
+      #     CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+      #     if git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1; then
+      #       echo "🔄 Tag ${{ env.RN_VERSION }} already exists. Recreating..."
+      #       git tag -d ${{ env.RN_VERSION }}
+      #       git push origin :refs/tags/${{ env.RN_VERSION }}
+      #     fi
+      #     git tag ${{ env.RN_VERSION }}
+      #     git push origin ${{ env.RN_VERSION }}
+      
+      - name: Create or Update Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.RN_VERSION }}
+          name: "Release RN ${{ env.RN_VERSION }}" 
+          body: ${{ github.workspace }}/output/README.md
+          # files: output/**  # output 폴더의 모든 파일 업로드
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
