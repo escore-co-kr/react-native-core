@@ -138,6 +138,10 @@ jobs:
         with:
           node-version: 20
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 전체 Git 히스토리를 가져오기 위해 설정
+          fetch-tags: true # 태그를 명시적으로 가져오기 위해 설정
+
     
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
