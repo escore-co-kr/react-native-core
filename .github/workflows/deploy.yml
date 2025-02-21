@@ -193,13 +193,13 @@ jobs:
       #     fi
       #     git tag ${{ env.RN_VERSION }}
       #     git push origin ${{ env.RN_VERSION }}
-      
+
       - name: Create or Update Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.RN_VERSION }}
           name: "Release RN ${{ env.RN_VERSION }}" 
-          body: ${{ github.workspace }}/output/README.md
+          body: ${{ github.workspace }}/README.md
           # files: output/**  # output 폴더의 모든 파일 업로드
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
