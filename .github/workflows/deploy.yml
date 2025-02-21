@@ -184,11 +184,18 @@ jobs:
 
       - name: Remove Tag if Exists
         run: |
-          if git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1; then
-            echo "🔄 Tag ${{ env.RN_VERSION }} already exists. delete..."
-            git tag -d ${{ env.RN_VERSION }}
-            git push origin :refs/tags/${{ env.RN_VERSION }}
-          fi
+          git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1 && { 
+            echo "🔄 Tag ${{ env.RN_VERSION }} already exists. delete...";
+            git tag -d ${{ env.RN_VERSION }};
+            git push origin :refs/tags/${{ env.RN_VERSION }};
+          } || { 
+            echo "No Tag found"; 
+          }
+          # if git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1; then
+          #   echo "🔄 Tag ${{ env.RN_VERSION }} already exists. delete..."
+          #   git tag -d ${{ env.RN_VERSION }}
+          #   git push origin :refs/tags/${{ env.RN_VERSION }}
+          # fi
 
       - name: Create or Update Release
         uses: softprops/action-gh-release@v1
