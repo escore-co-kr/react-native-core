@@ -63,10 +63,10 @@ function build_and_create_frameworks() {
 
 function initDirectory() {
     rm -rf $SRCROOT/Frameworks
-    rm -rf $SRCROOT/Sources
+    # rm -rf $SRCROOT/Sources
     mkdir $SRCROOT/Frameworks
-    mkdir Sources
-    echo "// Dummy.swift" > Sources/dummy.swift # touch Sources/dummy.swift
+    # mkdir Sources
+    # echo "// Dummy.swift" > Sources/dummy.swift # touch Sources/dummy.swift
 }
 
 initDirectory

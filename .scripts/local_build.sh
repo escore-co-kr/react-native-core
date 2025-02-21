@@ -30,6 +30,16 @@ RN_VERSION=$(node -e "
 
 echo "RN: ${RN_VERSION}"
 
+mkdir ios/Sources
+cp -R .scripts/Sources ios/Sources
+node -e "
+  const fs = require('fs'); 
+  let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
+  src = src.replace('PROJECT', '$PROJECT');
+  src = src.replace('RN_VERSION', '$RN_VERSION');
+  fs.writeFileSync('ios/Sources/info.swift', src);
+"
+
 # npm i
 # npx pod-install
 

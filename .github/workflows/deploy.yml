@@ -88,6 +88,18 @@ jobs:
         run: ruby create_project.rb
         working-directory: ios
 
+      - name: Generate Project Sources
+        run: |
+          mkdir ios/Sources
+          cp -R .scripts/Sources ios/Sources
+          node -e "
+            const fs = require('fs'); 
+            let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
+            src = src.replace('PROJECT', '${{ env.PROJECT }}');
+            src = src.replace('RN_VERSION', '${{ env.RN_VERSION }}');
+            fs.writeFileSync('ios/Sources/info.swift', src);
+          "
+
       - name: Build Frameworks
         run: ./build_xcframeworks.sh
         working-directory: ios
