@@ -100,9 +100,18 @@ jobs:
             src = src.replace('RN_VERSION', '${{ env.RN_VERSION }}');
             fs.writeFileSync('ios/Sources/info.swift', src);
           "
+      - name: Discover Working Directory (Before Build)
+        run: |
+          find .
+        working-directory: ios
 
       - name: Build Frameworks
         run: ./build_xcframeworks.sh
+        working-directory: ios
+
+      - name: Discover Working Directory (After Build)
+        run: |
+          find .
         working-directory: ios
 
       - name: Zip Frameworks
