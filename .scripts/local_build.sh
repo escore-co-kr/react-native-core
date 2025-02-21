@@ -36,7 +36,7 @@ node -e "
   const fs = require('fs'); 
   let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
   src = src.replace('PROJECT', '$PROJECT');
-  src = src.replace('RN_VERSION', '$RN_VERSION');
+  src = src.replace(':RN_VERSION:', '$RN_VERSION');
   fs.writeFileSync('ios/Sources/info.swift', src);
 "
 
