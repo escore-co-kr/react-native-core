@@ -92,6 +92,7 @@ jobs:
         run: |
           mkdir ios/Sources
           cp -R .scripts/Sources ios/Sources
+          ls -la ios/Sources
           node -e "
             const fs = require('fs'); 
             let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
