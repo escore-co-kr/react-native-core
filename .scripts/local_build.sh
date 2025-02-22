@@ -46,5 +46,7 @@ node -e "
 cd ios
 ruby create_project.rb
 ./build_xcframeworks.sh
+# cd ..
+# node .scripts/cp_framework_sources.js
 
 terminal-notifier -title "빌드 작업" -message "완료"

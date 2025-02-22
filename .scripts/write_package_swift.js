@@ -6,8 +6,6 @@ const project = "ReactNativePrebuild";
 const frameworks = fs.readdirSync(path.join(__dirname, "Frameworks"))
     .filter(name => name.endsWith(".xcframework"))
     .map(name => name.substring(0, name.length - ".xcframework".length));
-const sources = fs.readdirSync(path.join(__dirname, "Sources"))
-    .filter(name => name.endsWith(".swift"));
 
 const package = `// swift-tools-version:5.6
 import PackageDescription
@@ -31,9 +29,6 @@ let package = Package(
 ${frameworks.map(name => `                "${name}"`).join(",\n")}
             ],
             path: "Sources/",
-            sources: [
-${sources.map(name => `                "${name}"`).join(",\n")}
-            ],
             linkerSettings: [
                 .linkedLibrary("objc"),
                 .linkedLibrary("c++"),
