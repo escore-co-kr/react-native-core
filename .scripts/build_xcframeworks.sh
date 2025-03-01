@@ -6,7 +6,8 @@ export SRCROOT=$(pwd)
 export WORKSPACE=ReactNativePrebuild
 export PROJECT="Pods-$WORKSPACE"
 
-SDKS=("iphoneos" "iphonesimulator" "macosx" "xros" "xrosimulator" "watchos" "watchsimulator" "appletvos" "appletvsimulator")
+# SDKS=("iphoneos" "iphonesimulator" "macosx" "xros" "xrosimulator" "watchos" "watchsimulator" "appletvos" "appletvsimulator")
+SDKS=("iphoneos" "iphonesimulator")
 
 function archive() {
   local configuration="Release"
