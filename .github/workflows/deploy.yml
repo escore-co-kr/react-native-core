@@ -113,7 +113,8 @@ jobs:
             const fs = require('fs'); 
             let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
             src = src.replace('PROJECT', '${{ env.PROJECT }}');
-            src = src.replace(':RN_VERSION:', '${{ env.PLATFORM_HASH }}');
+            src = src.replace(':RN_VERSION:', '${{ env.RN_VERSION }}');
+            src = src.replace(':PLATFORM_HASH:', '${{ env.PLATFORM_HASH }}');
             fs.writeFileSync('ios/Sources/info.swift', src);
           "
       - name: Discover Working Directory (Before Build)
