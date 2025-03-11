@@ -44,6 +44,22 @@ jobs:
           role-to-assume: ${{ env.AWS_ROLE_NAME }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: "Get Platform Hash"
+        id: get_platform_hash
+        run: |
+          PLATFORM_HASH=$(node -e "
+            const fs = require('fs'), crypto = require('crypto');
+            const package = JSON.parse(fs.readFileSync('package.json'));
+            const list = [...Object.entries(package.dependencies), ...Object.entries(package.devDependencies)]
+              .sort((a, b) => a[0].localeCompare(b[0])); 
+            const text = list.map(v => v[0] + '@' + v[1])
+              .join('|');
+            console.log(crypto.createHash('sha256').update(text).digest('hex'));
+          ")
+          echo $PLATFORM_HASH;
+          echo "PLATFORM_HASH=${PLATFORM_HASH}" >> $GITHUB_OUTPUT
+          echo "PLATFORM_HASH=${PLATFORM_HASH}" >> $GITHUB_ENV
+
       - name: Setup Gem xcodeproj
         run: |
           gem install --user-install xcodeproj
@@ -97,7 +113,7 @@ jobs:
             const fs = require('fs'); 
             let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
             src = src.replace('PROJECT', '${{ env.PROJECT }}');
-            src = src.replace(':RN_VERSION:', '${{ env.RN_VERSION }}');
+            src = src.replace(':RN_VERSION:', '${{ env.PLATFORM_HASH }}');
             fs.writeFileSync('ios/Sources/info.swift', src);
           "
       - name: Discover Working Directory (Before Build)
