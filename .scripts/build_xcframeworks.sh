@@ -10,7 +10,7 @@ export PROJECT="Pods-$WORKSPACE"
 SDKS=("iphoneos" "iphonesimulator")
 
 function archive() {
-  local configuration="Release"
+  configuration=${BUILD_CONFIG:-"Debug"}
   for SDK in "${SDKS[@]}"; do
       echo "📦 Archiving for $SDK..."
       
@@ -25,7 +25,7 @@ function archive() {
         BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
         DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
 
-      echo "✅ Archive complete: $SDK"
+      echo "✅ Archive complete: $SDK $configuration"
   done
     
   # wait
