@@ -114,6 +114,7 @@ jobs:
             src = src.replace('PROJECT', '${{ env.PROJECT }}');
             src = src.replace(':RN_VERSION:', '${{ env.RN_VERSION }}');
             src = src.replace(':PLATFORM_HASH:', '${{ env.PLATFORM_HASH }}');
+            src = src.replace(':BUILD_CONFIG:', '${{ env.BUILD_CONFIG }}');
             fs.writeFileSync('ios/Sources/info.swift', src);
           "
       - name: Discover Working Directory (Before Build)
@@ -145,7 +146,7 @@ jobs:
         with:
           role-to-assume: ${{ env.AWS_ROLE_NAME }}
           aws-region: ${{ env.AWS_REGION }}
-          
+
       - name: Find AWS CloudFront Distribution
         run: |
           OUTPUT=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,domain:Aliases.Items[0],bucket:Origins.Items[0].DomainName}[?domain=='${DOMAIN}']"  --output text)
