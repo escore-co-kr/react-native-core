@@ -43,12 +43,6 @@ jobs:
         with:
           node-version: 23
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ env.AWS_ROLE_NAME }}
-          aws-region: ${{ env.AWS_REGION }}
-
       - name: "Get Platform Hash"
         id: get_platform_hash
         run: |
@@ -146,6 +140,12 @@ jobs:
         run: |
           node .scripts/write_readme.js
         
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_NAME }}
+          aws-region: ${{ env.AWS_REGION }}
+          
       - name: Find AWS CloudFront Distribution
         run: |
           OUTPUT=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,domain:Aliases.Items[0],bucket:Origins.Items[0].DomainName}[?domain=='${DOMAIN}']"  --output text)
