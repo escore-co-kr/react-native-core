@@ -1,4 +1,4 @@
-# 📦 Prebuild SPM Project
+# 📦 Prebuild SPM Project::Release
 ### RN 라이브러리 버전
 
 | 라이브러리 | 버전 |
