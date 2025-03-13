@@ -246,7 +246,7 @@ jobs:
 
       - name: Push
         run: |
-          git push
+          git push -u origin $BRANCH
 
       # - name: Remove Tag if Exists
       #   run: |
