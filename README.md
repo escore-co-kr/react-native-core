@@ -14,6 +14,7 @@
 | `@tanstack/react-query` | 5.66.7 |
 | `babel-plugin-module-resolver` | 5.0.2 |
 | `react-native-device-info` | ^14.0.1 |
+| `react-native-google-mobile-ads` | 14.9.1 |
 | `react-native-modal-datetime-picker` | ^18.0.0 |
 | `react-native-navigation-bar-color` | ^2.0.2 |
 | `react-native-pager-view` | ^6.6.1 |

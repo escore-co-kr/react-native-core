@@ -2,6 +2,6 @@
 
 public struct ReactNativePrebuild {
     public static let RN_VERSION = "0.77.1"
-    public static let PLATFORM_HASH = "ca5c2ec7c4e8c3953d685d091400269591c61becf41a4f49ef46e4fb3f56dd29"
+    public static let PLATFORM_HASH = "d268684916d8f2d0981c8b9dbbb07e4d646cc4309d05c59637f68991ea4d13ab"
     public static let BUILD_CONFIG = "Release"
 }
