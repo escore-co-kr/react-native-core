@@ -34,10 +34,10 @@ jobs:
           LATEST_COMMIT=$(git ls-remote origin ${{ github.ref_name }} | awk '{print $1}')
           if [[ "$LATEST_COMMIT" == "${{ github.sha }}" ]]; then
             echo "is_latest=true" >> $GITHUB_ENV
-            echo "::set-output name=is_latest::true"
+            echo "is_latest=true" >> $GITHUB_OUTPUT
           else
             echo "is_latest=false" >> $GITHUB_ENV
-            echo "::set-output name=is_latest::false"
+            echo "is_latest=false" >> $GITHUB_OUTPUT
           fi
     outputs:
       is_latest: ${{ steps.check.outputs.is_latest }}
