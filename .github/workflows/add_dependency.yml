@@ -1,0 +1,43 @@
+name: Add Dependency
+
+on:
+  workflow_dispatch:  # 🔑 GitHub UI에서 수동 실행 가능
+    inputs:
+      package_name:
+        description: 'NPM Package to Install'
+        required: true
+        type: string
+
+jobs:
+  install-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Package
+        run: npm install ${{ github.event.inputs.package_name }}
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b update-package-${{ github.run_number }}
+          git add package.json
+          git commit -m "chore: Add ${{ github.event.inputs.package_name }} package"
+          git push origin update-package-${{ github.run_number }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "chore: Add ${{ github.event.inputs.package_name }} package"
+          body: "This PR adds the package `${{ github.event.inputs.package_name }}` to the project."
+          head: update-package-${{ github.run_number }}
+          base: main
+          labels: "dependencies, automated-pr"

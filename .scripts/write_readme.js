@@ -16,13 +16,23 @@ list.sort((a, b) => {
     return a.key.localeCompare(b.key);
 });
 
-const text = `# 📦 Prebuild SPM Project
+const text = `# 📦 Prebuild SPM Project::${process.env.BUILD_CONFIG}
+### PLATFORM_HASH
+\`\`\`
+${process.env.PLATFORM_HASH}
+\`\`\`
+
 ### RN 라이브러리 버전
 
 | 라이브러리 | 버전 |
 |------------|-------|
-${list.map(({ key, version}) => `| \`${key}\` | ${version} |`).join("\n")}
+${list.map(({ key, version }) => `| \`${key}\` | ${version} |`).join("\n")}
 ---
+
+### RCTThirdPartyComponentsProvider.mm
+\`\`\`swift
+${fs.readFileSync(path.join(__dirname, "../ios/build/generated/ios/RCTThirdPartyComponentsProvider.mm"))}
+\`\`\`
 `;
 
 fs.writeFileSync(path.join(__dirname, "../README.md"), text);
