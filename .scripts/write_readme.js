@@ -16,7 +16,7 @@ list.sort((a, b) => {
     return a.key.localeCompare(b.key);
 });
 
-const text = `# 📦 Prebuild SPM Project
+const text = `# 📦 Prebuild SPM Project::${process.env.BUILD_CONFIG}
 ### RN 라이브러리 버전
 
 | 라이브러리 | 버전 |

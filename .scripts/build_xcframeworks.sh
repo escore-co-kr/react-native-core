@@ -6,31 +6,27 @@ export SRCROOT=$(pwd)
 export WORKSPACE=ReactNativePrebuild
 export PROJECT="Pods-$WORKSPACE"
 
+# SDKS=("iphoneos" "iphonesimulator" "macosx" "xros" "xrosimulator" "watchos" "watchsimulator" "appletvos" "appletvsimulator")
+SDKS=("iphoneos" "iphonesimulator")
+
 function archive() {
-  local configuration="Release"
-  echo "🔨 Archiving ($configuration) for iPhoneSimulator..."
-  xcodebuild archive \
-    -workspace $WORKSPACE.xcworkspace \
-    -scheme $PROJECT \
-    -archivePath $SRCROOT/$PROJECT-iphonesimulator.xcarchive \
-    -configuration "$configuration" \
-    -sdk iphonesimulator \
-    -quiet \
-    SKIP_INSTALL=NO \
-    BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
-    DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
-  
-  echo "🔨 Archiving ($configuration) for iPhoneOS..."
-  xcodebuild archive \
-    -workspace $WORKSPACE.xcworkspace \
-    -scheme $PROJECT \
-    -archivePath $SRCROOT/$PROJECT-iphoneos.xcarchive \
-    -configuration "$configuration" \
-    -sdk iphoneos \
-    -quiet \
-    SKIP_INSTALL=NO \
-    BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
-    DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
+  configuration=${BUILD_CONFIG:-"Debug"}
+  for SDK in "${SDKS[@]}"; do
+      echo "📦 Archiving for $SDK..."
+      
+      xcodebuild archive \
+        -workspace $WORKSPACE.xcworkspace \
+        -scheme $PROJECT \
+        -archivePath $SRCROOT/$PROJECT-$SDK.xcarchive \
+        -configuration $configuration \
+        -sdk $SDK \
+        -quiet \
+        SKIP_INSTALL=NO \
+        BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
+        DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
+
+      echo "✅ Archive complete: $SDK $configuration"
+  done
     
   # wait
   echo "✅ [$configuration] 아카이브 완료!"
@@ -43,19 +39,20 @@ function create_xcframework() {
       framework_name=$(basename $framework .framework)
       echo "create_xcframework=$framework_name"
 
-      if [ -d "$SRCROOT/$PROJECT-iphonesimulator.xcarchive/dSYMs/$basename.dSYM" ]; then
-        xcodebuild -create-xcframework \
-            -framework "$SRCROOT/$PROJECT-iphonesimulator.xcarchive/Products/Library/Frameworks/$basename" \
-              -debug-symbols "$SRCROOT/$PROJECT-iphonesimulator.xcarchive/dSYMs/$basename.dSYM" \
-            -framework "$SRCROOT/$PROJECT-iphoneos.xcarchive/Products/Library/Frameworks/$basename" \
-              -debug-symbols "$SRCROOT/$PROJECT-iphoneos.xcarchive/dSYMs/$basename.dSYM" \
-            -output "$SRCROOT/Frameworks/$framework_name.xcframework" || { echo "Error"; exit 1; }
-      else
-        xcodebuild -create-xcframework \
-          -framework "$SRCROOT/$PROJECT-iphonesimulator.xcarchive/Products/Library/Frameworks/$basename" \
-          -framework "$SRCROOT/$PROJECT-iphoneos.xcarchive/Products/Library/Frameworks/$basename" \
-          -output "$SRCROOT/Frameworks/$framework_name.xcframework" || { echo "Error"; exit 1; }
-      fi
+      XCFRAMEWORK_CMD="xcodebuild -create-xcframework"
+      for SDK in "${SDKS[@]}"; do
+        XCFRAMEWORK_CMD+=" -framework \"$SRCROOT/$PROJECT-$SDK.xcarchive/Products/Library/Frameworks/$basename\""
+        if [ -d "$SRCROOT/$PROJECT-$SDK.xcarchive/dSYMs/$basename.dSYM" ]; then
+          XCFRAMEWORK_CMD+=" -debug-symbols \"$SRCROOT/$PROJECT-$SDK.xcarchive/dSYMs/$basename.dSYM\""
+        fi
+      done
+
+      XCFRAMEWORK_CMD+=" -output \"$SRCROOT/Frameworks/$framework_name.xcframework\""
+      echo "🏗️ Creating XCFramework..."
+      echo $XCFRAMEWORK_CMD
+      eval $XCFRAMEWORK_CMD
+      echo "🎉 XCFramework created at $SRCROOT/Frameworks/$framework_name.xcframework"
+
     done
 
     # wait  # 모든 xcframework 생성 작업 대기
@@ -65,7 +62,13 @@ function create_xcframework() {
 }
 
 function copyCommonFramworks() {
-  cp -R $SRCROOT/Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework $SRCROOT/Frameworks/hermes.xcframework
+  # cp -R $SRCROOT/Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework $SRCROOT/Frameworks/hermes.xcframework
+  # RN의 경우 hermes가 xcframework만 제공해서 복붙했는데 그 외 케이스가 있어서 Pods에서 일괄 복붙
+  find "$SRCROOT/Pods" -type d -name "*.xcframework" | while read -r framework; do
+    dest="$SRCROOT/Frameworks/$(basename "$framework")"
+    echo "Copying $framework to $dest"
+    cp -R "$framework" "$dest"
+  done
 }
 
 function clean() {
@@ -79,7 +82,7 @@ function build_and_create_frameworks() {
     echo "INSTALL: NPM"
     npm i
     echo "INSTALL: pod"
-    npx pod-install # pod install
+    npx pod-install || exit 1; # pod install
     
     echo "BUILD: SWIFT Build Test"
     swift build || exit 1
