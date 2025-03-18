@@ -27,6 +27,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          
+      - name: Summary
+        run: |
+          for item in ${{ github.event.inputs.package_name }}; do
+            echo "+ $item" >> $GITHUB_STEP_SUMMARY
+          done
 
       - name: Install Package
         run: npm install ${{ github.event.inputs.package_name }}
