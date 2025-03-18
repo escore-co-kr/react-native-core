@@ -31,14 +31,14 @@ jobs:
       - name: Install Package
         run: npm install ${{ github.event.inputs.package_name }}
 
-      - name: Commit Changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b update-package-${{ github.run_number }}
-          git add package.json
-          git commit -m "chore: Add ${{ github.event.inputs.package_name }} package"
-          git push origin update-package-${{ github.run_number }}
+      # - name: Commit Changes
+      #   run: |
+      #     git config --global user.name "github-actions[bot]"
+      #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #     git checkout -b update-package-${{ github.run_number }}
+      #     git add package.json
+      #     git commit -m "chore: Add ${{ github.event.inputs.package_name }} package"
+      #     git push origin update-package-${{ github.run_number }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
