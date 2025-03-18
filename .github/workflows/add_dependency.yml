@@ -27,15 +27,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          
+
       - name: Summary
         run: |
           for item in ${{ github.event.inputs.package_name }}; do
-            echo "+ $item" >> $GITHUB_STEP_SUMMARY
+            echo "+ \`$item\`" >> $GITHUB_STEP_SUMMARY
           done
 
       - name: Install Package
         run: npm install ${{ github.event.inputs.package_name }}
+      
+      - name: Summary package
+        run: |
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat package.json >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
       # - name: Commit Changes
       #   run: |
@@ -49,9 +55,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          # token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GB_TOKEN }}
           # base: main
-          # branch: update-package-${{ github.run_number }}
+          branch: update-package-${{ github.run_number }}
 
           title: "chore: Add ${{ github.event.inputs.package_name }} package"
           body: "This PR adds the package `${{ github.event.inputs.package_name }}` to the project."
