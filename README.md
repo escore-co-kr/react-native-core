@@ -1,7 +1,7 @@
 # 📦 Prebuild SPM Project::Release
 ### PLATFORM_HASH
 ```
-1d9a19a91c8cdac7f1897bb8e1417e842c22bdd6b7b4eb385f520f93a396f101
+7790a3ca64cc5e2f35a1555f06110b3a9758f8d0023aa022999d3fcb7cdf67c6
 ```
 
 ### RN 라이브러리 버전
@@ -18,11 +18,14 @@
 | `@react-navigation/native-stack` | 6.11.0 |
 | `@tanstack/react-query` | 5.66.7 |
 | `babel-plugin-module-resolver` | 5.0.2 |
+| `react-native-collapsible-tab-view` | ^8.0.0 |
 | `react-native-device-info` | ^14.0.1 |
+| `react-native-gesture-handler` | ^2.24.0 |
 | `react-native-google-mobile-ads` | ^14.9.1 |
 | `react-native-modal-datetime-picker` | ^18.0.0 |
 | `react-native-navigation-bar-color` | ^2.0.2 |
 | `react-native-pager-view` | ^6.6.1 |
+| `react-native-reanimated` | ^3.17.1 |
 | `react-native-safe-area-context` | 5.2.0 |
 | `react-native-screens` | 4.8.0 |
 | `react-native-sqlite-storage` | ^6.0.1 |
@@ -52,6 +55,7 @@
 {
   return @{
 		@"RNDateTimePicker": NSClassFromString(@"RNDateTimePickerComponentView"), // @react-native-community/datetimepicker
+		@"RNGestureHandlerButton": NSClassFromString(@"RNGestureHandlerButtonComponentView"), // react-native-gesture-handler
 		@"RNGoogleMobileAdsBannerView": NSClassFromString(@"RNGoogleMobileAdsBannerView"), // react-native-google-mobile-ads
 		@"RNGoogleMobileAdsMediaView": NSClassFromString(@"RNGoogleMobileAdsMediaView"), // react-native-google-mobile-ads
 		@"RNGoogleMobileAdsNativeView": NSClassFromString(@"RNGoogleMobileAdsNativeView"), // react-native-google-mobile-ads
