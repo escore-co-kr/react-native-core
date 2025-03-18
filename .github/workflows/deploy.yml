@@ -190,7 +190,7 @@ jobs:
           path: artifact/*
 
   deploy:
-    if: github.ref != 'refs/heads/main' # 메인일때만 debug, release 재설정
+    if: github.ref == 'refs/heads/main' # 메인일때만 debug, release 재설정
     runs-on: ubuntu-latest
     needs: build
     strategy:
