@@ -1,16 +1,18 @@
 name: Add Dependency
 
+run-name: Add ${{ github.event.inputs.package_name }} by @${{ github.actor }}
+
 on:
-  workflow_dispatch:  # 🔑 GitHub UI에서 수동 실행 가능
+  workflow_dispatch: # 🔑 GitHub UI에서 수동 실행 가능
     inputs:
       package_name:
-        description: 'NPM Package to Install'
+        description: "NPM Package to Install"
         required: true
         type: string
-        
+
 permissions:
-  id-token: write   # This is required for requesting the JWT
-  contents: write    # This is required for actions/checkout
+  id-token: write # This is required for requesting the JWT
+  contents: write # This is required for actions/checkout
 
 jobs:
   install-package:
@@ -23,7 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install Package
         run: npm install ${{ github.event.inputs.package_name }}
@@ -40,7 +42,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           base: main
           branch: update-package-${{ github.run_number }}
 
