@@ -94,7 +94,7 @@ function build_and_create_frameworks() {
     echo "BUILD: xcframework"
     create_xcframework
     echo "CLEAN UP: Done"
-    clean
+    # clean
 }
 
 function initDirectory() {
