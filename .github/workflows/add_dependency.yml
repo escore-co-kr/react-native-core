@@ -40,8 +40,10 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{ secrets.GH_TOKEN }}
+          base: main
+          branch: update-package-${{ github.run_number }}
+
           title: "chore: Add ${{ github.event.inputs.package_name }} package"
           body: "This PR adds the package `${{ github.event.inputs.package_name }}` to the project."
-          head: update-package-${{ github.run_number }}
-          base: main
           labels: "dependencies, automated-pr"
