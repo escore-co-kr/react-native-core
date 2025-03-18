@@ -1,0 +1,130 @@
+name: Add Dependency
+
+run-name: Add ${{ github.event.inputs.package_name }} by @${{ github.actor }}
+
+on:
+  workflow_dispatch: # 🔑 GitHub UI에서 수동 실행 가능
+    inputs:
+      package_name:
+        description: "NPM Package to Install"
+        required: true
+        type: string
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: write # This is required for actions/checkout
+
+env:
+  AWS_REGION: ap-northeast-2
+  AWS_ROLE_NAME: ${{ secrets.AWS_ROLE_NAME }}
+  DOMAIN: ${{ vars.DOMAIN }} # 라이브러리 올릴 CDN
+  DOMAIN_PATH: "internal/ios/rn"
+  PROJECT: "ReactNativePrebuild"
+
+jobs:
+  install-package:
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Summary
+        run: |
+          echo "# npm i" >> $GITHUB_STEP_SUMMARY
+          echo "# npm i" > pr.txt
+          for item in ${{ github.event.inputs.package_name }}; do
+            echo "+ \`$item\`" >> $GITHUB_STEP_SUMMARY
+            echo "+ \`$item\`" >> pr.txt
+          done
+
+      - name: Install Package
+        run: |
+          npm install ${{ github.event.inputs.package_name }}
+      
+      - name: Setup Gem xcodeproj
+        run: |
+          gem install --user-install xcodeproj
+          mkdir ios
+
+      - name: Setup Project Script
+        run: |
+          echo "require 'xcodeproj'
+            project = Xcodeproj::Project.new('${{ env.PROJECT }}.xcodeproj')
+            project.new_target(:application, '${{ env.PROJECT }}', :ios)
+            project.save" > ios/create_project.rb
+
+          cp .scripts/write_package_swift.js ios/write_package_swift.js
+          cp .scripts/build_xcframeworks.sh ios/build_xcframeworks.sh
+          chmod +x ios/build_xcframeworks.sh
+          node -e "
+            const fs = require('fs'); 
+            let pod = fs.readFileSync('.scripts/Podfile', 'utf-8');
+            pod = pod.replace('PROJECT', '${{ env.PROJECT }}');
+            fs.writeFileSync('ios/Podfile', pod);
+          "
+
+      - name: Create Xcode Project
+        run: ruby create_project.rb
+        working-directory: ios
+      
+      - name: Generate Project Sources
+        run: |
+          mkdir ios/Sources
+          cp -R .scripts/Sources ios
+          ls -la ios/Sources
+          node -e "
+            const fs = require('fs'); 
+            let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
+            src = src.replace('PROJECT', '${{ env.PROJECT }}');
+            src = src.replace(':RN_VERSION:', '${{ env.RN_VERSION }}');
+            src = src.replace(':PLATFORM_HASH:', '${{ env.PLATFORM_HASH }}');
+            src = src.replace(':BUILD_CONFIG:', '${{ env.BUILD_CONFIG }}');
+            fs.writeFileSync('ios/Sources/info.swift', src);
+          "
+
+      - name: Setup Pod
+        run: |
+          npx pod-install
+
+      - name: Summary package
+        run: |
+          echo "# package.json" >> $GITHUB_STEP_SUMMARY
+          echo "# package.json" >> pr.txt
+          echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`json" >> pr.txt
+          cat package.json >> $GITHUB_STEP_SUMMARY
+          cat package.json >> pr.txt
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> pr.txt
+
+          echo "# RCTThirdPartyComponentsProvider.mm" >> $GITHUB_STEP_SUMMARY
+          echo "# RCTThirdPartyComponentsProvider.mm" >> pr.txt
+          echo "\`\`\`swift" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`swift" >> pr.txt
+          cat ios/build/generated/ios/RCTThirdPartyComponentsProvider.mm >> $GITHUB_STEP_SUMMARY
+          cat ios/build/generated/ios/RCTThirdPartyComponentsProvider.mm >> pr.txt
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY          
+          echo "\`\`\`" >> pr.txt          
+    
+      - name: Cleanup
+        run: |
+          rm -rf ios
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GB_TOKEN }}
+          # base: main
+          branch: update-package-${{ github.run_number }}
+
+          title: "Add ${{ github.event.inputs.package_name }} package"
+          body-path: pr.txt
+          labels: "dependencies, automated-pr"
+          add-paths: |
+            package.json
