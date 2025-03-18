@@ -15,6 +15,7 @@ prepare_react_native_project!
 #   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
 #   use_frameworks! :linkage => linkage.to_sym
 # end
+$RNGoogleMobileAdsAsStaticFramework = true
 
 target 'PROJECT' do
   # use_frameworks! :linkage => :static
