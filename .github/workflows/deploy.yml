@@ -21,7 +21,7 @@ env:
 
 concurrency:
   group: ${{ github.ref }}-deploy
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   id-token: write   # This is required for requesting the JWT
@@ -56,7 +56,7 @@ jobs:
             project.new_target(:application, '${{ env.PROJECT }}', :ios)
             project.save" > ios/create_project.rb
 
-          cp .scripts/generate_package_swift.rb ios/generate_package_swift.rb
+          cp .scripts/write_package_swift.js ios/write_package_swift.js
           cp .scripts/build_xcframeworks.sh ios/build_xcframeworks.sh
           chmod +x ios/build_xcframeworks.sh
           node -e "
@@ -88,8 +88,30 @@ jobs:
         run: ruby create_project.rb
         working-directory: ios
 
+      - name: Generate Project Sources
+        run: |
+          mkdir ios/Sources
+          cp -R .scripts/Sources ios
+          ls -la ios/Sources
+          node -e "
+            const fs = require('fs'); 
+            let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
+            src = src.replace('PROJECT', '${{ env.PROJECT }}');
+            src = src.replace(':RN_VERSION:', '${{ env.RN_VERSION }}');
+            fs.writeFileSync('ios/Sources/info.swift', src);
+          "
+      - name: Discover Working Directory (Before Build)
+        run: |
+          find .
+        working-directory: ios
+
       - name: Build Frameworks
         run: ./build_xcframeworks.sh
+        working-directory: ios
+
+      - name: Discover Working Directory (After Build)
+        run: |
+          find .
         working-directory: ios
 
       - name: Zip Frameworks
@@ -138,6 +160,10 @@ jobs:
         with:
           node-version: 20
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 전체 Git 히스토리를 가져오기 위해 설정
+          fetch-tags: true # 태그를 명시적으로 가져오기 위해 설정
+
     
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
@@ -182,24 +208,27 @@ jobs:
         run: |
           git push
 
-      # - name: Tag
-      #   run: |
-      #     CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+      - name: Remove Tag if Exists
+        run: |
+          git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1 && { 
+            echo "🔄 Tag ${{ env.RN_VERSION }} already exists. delete...";
+            git tag -d ${{ env.RN_VERSION }};
+            git push origin :refs/tags/${{ env.RN_VERSION }};
+          } || { 
+            echo "No Tag found"; 
+          }
+          # if git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1; then
+          #   echo "🔄 Tag ${{ env.RN_VERSION }} already exists. delete..."
+          #   git tag -d ${{ env.RN_VERSION }}
+          #   git push origin :refs/tags/${{ env.RN_VERSION }}
+          # fi
 
-      #     if git rev-parse "refs/tags/${{ env.RN_VERSION }}" >/dev/null 2>&1; then
-      #       echo "🔄 Tag ${{ env.RN_VERSION }} already exists. Recreating..."
-      #       git tag -d ${{ env.RN_VERSION }}
-      #       git push origin :refs/tags/${{ env.RN_VERSION }}
-      #     fi
-      #     git tag ${{ env.RN_VERSION }}
-      #     git push origin ${{ env.RN_VERSION }}
-      
       - name: Create or Update Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.RN_VERSION }}
           name: "Release RN ${{ env.RN_VERSION }}" 
-          body: ${{ github.workspace }}/output/README.md
+          body_path: ${{ github.workspace }}/README.md
           # files: output/**  # output 폴더의 모든 파일 업로드
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

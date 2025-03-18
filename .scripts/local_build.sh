@@ -1,5 +1,5 @@
 #!/bin/bash
-./.scripts/clean.sh
+./.scripts/local_clean.sh
 
 mkdir ios
 PROJECT="ReactNativePrebuild"
@@ -11,7 +11,7 @@ echo "require 'xcodeproj'
           project.new_target(:application, '$PROJECT', :ios)
           project.save" > ios/create_project.rb
 
-cp .scripts/generate_package_swift.rb ios/generate_package_swift.rb
+cp .scripts/write_package_swift.js ios/write_package_swift.js
 cp .scripts/build_xcframeworks.sh ios/build_xcframeworks.sh
 chmod +x ios/build_xcframeworks.sh
 node -e "
@@ -30,11 +30,23 @@ RN_VERSION=$(node -e "
 
 echo "RN: ${RN_VERSION}"
 
+mkdir ios/Sources
+cp -R .scripts/Sources ios
+node -e "
+  const fs = require('fs'); 
+  let src = fs.readFileSync('ios/Sources/info.swift', 'utf-8');
+  src = src.replace('PROJECT', '$PROJECT');
+  src = src.replace(':RN_VERSION:', '$RN_VERSION');
+  fs.writeFileSync('ios/Sources/info.swift', src);
+"
+
 # npm i
 # npx pod-install
 
 cd ios
 ruby create_project.rb
 ./build_xcframeworks.sh
+# cd ..
+# node .scripts/cp_framework_sources.js
 
 terminal-notifier -title "빌드 작업" -message "완료"
