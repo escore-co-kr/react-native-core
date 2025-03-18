@@ -1,0 +1,66 @@
+name: Add Dependency
+
+run-name: Add ${{ github.event.inputs.package_name }} by @${{ github.actor }}
+
+on:
+  workflow_dispatch: # 🔑 GitHub UI에서 수동 실행 가능
+    inputs:
+      package_name:
+        description: "NPM Package to Install"
+        required: true
+        type: string
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: write # This is required for actions/checkout
+  pull-requests: write
+
+jobs:
+  install-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Summary
+        run: |
+          for item in ${{ github.event.inputs.package_name }}; do
+            echo "+ \`$item\`" >> $GITHUB_STEP_SUMMARY
+          done
+
+      - name: Install Package
+        run: |
+          npm install ${{ github.event.inputs.package_name }}
+          npx pod-install
+      
+      - name: Summary package
+        run: |
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat package.json >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      # - name: Commit Changes
+      #   run: |
+      #     git config --global user.name "github-actions[bot]"
+      #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #     git checkout -b update-package-${{ github.run_number }}
+      #     git add package.json
+      #     git commit -m "chore: Add ${{ github.event.inputs.package_name }} package"
+      #     git push origin update-package-${{ github.run_number }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GB_TOKEN }}
+          # base: main
+          branch: update-package-${{ github.run_number }}
+
+          title: "chore: Add ${{ github.event.inputs.package_name }} package"
+          body: "This PR adds the package `${{ github.event.inputs.package_name }}` to the project."
+          labels: "dependencies, automated-pr"

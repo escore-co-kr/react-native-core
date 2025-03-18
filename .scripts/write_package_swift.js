@@ -34,6 +34,7 @@ ${frameworks.map(name => `                "${name}"`).join(",\n")}
                 .linkedLibrary("c++"),
                 .linkedLibrary("c++abi"),
                 .linkedFramework("JavaScriptCore", .when(platforms: [.iOS])),
+                .linkedFramework("CoreAudio", .when(platforms: [.iOS])),
             ]
         ),
 ${frameworks.map(name => `        .binaryTarget(
