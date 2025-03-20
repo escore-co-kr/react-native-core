@@ -1,7 +1,7 @@
 # 📦 Prebuild SPM Project::Release
 ### PLATFORM_HASH
 ```
-7790a3ca64cc5e2f35a1555f06110b3a9758f8d0023aa022999d3fcb7cdf67c6
+938fec94bf3642bdaa2597b66fce0e7cc2d0f635554679949d07e1ee55c4f003
 ```
 
 ### RN 라이브러리 버전
@@ -10,6 +10,7 @@
 |------------|-------|
 | `react-native` | 0.77.1 |
 | `react` | 18.3.1 |
+| `@d11/react-native-fast-image` | ^8.9.2 |
 | `@react-native-async-storage/async-storage` | 2.1.1 |
 | `@react-native-community/datetimepicker` | 8.3.0 |
 | `@react-navigation/bottom-tabs` | 6.6.1 |
@@ -54,6 +55,7 @@
 + (NSDictionary<NSString *, Class<RCTComponentViewProtocol>> *)thirdPartyFabricComponents
 {
   return @{
+		@"FastImageView": NSClassFromString(@"FFFastImageViewComponentView"), // @d11/react-native-fast-image
 		@"RNDateTimePicker": NSClassFromString(@"RNDateTimePickerComponentView"), // @react-native-community/datetimepicker
 		@"RNGestureHandlerButton": NSClassFromString(@"RNGestureHandlerButtonComponentView"), // react-native-gesture-handler
 		@"RNGoogleMobileAdsBannerView": NSClassFromString(@"RNGoogleMobileAdsBannerView"), // react-native-google-mobile-ads
