@@ -182,6 +182,7 @@ jobs:
           cp README.md artifact/README.md
           cp package.json artifact/package.json
           node -e 'const fs = require("fs"); fs.writeFileSync("artifact/platform.txt", process.env.PLATFORM_HASH, "utf-8");'
+          NODE_NO_WARNINGS=1 npx react-native config > artifact/platform.json
           echo "PLATFORM_HASH=$PLATFORM_HASH" >> $GITHUB_STEP_SUMMARY
       
       - name: Upload Build Artifact
@@ -256,7 +257,7 @@ jobs:
       - name: Commit
         run: |
           # 🔑 빌드 결과 커밋 (예시: 빌드 아티팩트 추가)
-          git add Package.swift package.json Sources README.md platform.txt # 원하는 파일만 추가
+          git add Package.swift package.json Sources README.md platform.txt platform.json # 원하는 파일만 추가
           git commit -m "🚀 Release version ${{ env.RN_VERSION }} <- ${{ env.HASH }} ${{ env.BRANCH }}" || echo "✅ No changes to commit"
 
       - name: Push

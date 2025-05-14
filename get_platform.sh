@@ -18,7 +18,7 @@ process.stdin.on("end", () => {
     }).sort((a, b) => a.name.localeCompare(b.name));
 
   const hash = crypto.createHash("sha256").update(JSON.stringify(nativeDeps)).digest("hex");
-  if (hash == "cf835f0e03aa44ccd55503a0db7d3df9122be9d50dec8f0554bd41e7af988847") {
+  if (hash == "17a27507790fa3a70efc63238bf76eb9f2f040139a114fb7db604068fff336b1") {
     console.log("7790a3ca64cc5e2f35a1555f06110b3a9758f8d0023aa022999d3fcb7cdf67c6");
   } else {
     console.log(hash);
