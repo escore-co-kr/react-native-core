@@ -21,7 +21,7 @@ process.stdin.on("end", () => {
     console.error(nativeDeps);
 
     const hash = crypto.createHash("sha256").update(JSON.stringify(nativeDeps)).digest("hex");
-    if (hash == "17a27507790fa3a70efc63238bf76eb9f2f040139a114fb7db604068fff336b1") {
+    if (hash == "81183a27c3f0911962fc659bc907be9a6dd1aba474a18e30da900237e6518ac6") {
         console.log("7790a3ca64cc5e2f35a1555f06110b3a9758f8d0023aa022999d3fcb7cdf67c6");
     } else {
         console.log(hash);
