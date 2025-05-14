@@ -256,7 +256,7 @@ jobs:
       - name: Commit
         run: |
           # 🔑 빌드 결과 커밋 (예시: 빌드 아티팩트 추가)
-          git add Package.swift package.json Sources README.md # 원하는 파일만 추가
+          git add Package.swift package.json Sources README.md platform.txt # 원하는 파일만 추가
           git commit -m "🚀 Release version ${{ env.RN_VERSION }} <- ${{ env.HASH }} ${{ env.BRANCH }}" || echo "✅ No changes to commit"
 
       - name: Push
