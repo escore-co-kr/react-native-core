@@ -83,7 +83,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-gesture-handler/RNGestureHandler.podspec",
-          "version": "2.25.0",
+          "version": "2.24.0",
           "configurations": [],
           "scriptPhases": []
         },
@@ -111,7 +111,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-google-mobile-ads/RNGoogleMobileAds.podspec",
-          "version": "14.11.0",
+          "version": "14.9.1",
           "configurations": [],
           "scriptPhases": [
             {
@@ -168,7 +168,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-pager-view/react-native-pager-view.podspec",
-          "version": "6.7.1",
+          "version": "6.6.1",
           "configurations": [],
           "scriptPhases": []
         },
@@ -195,7 +195,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-reanimated/RNReanimated.podspec",
-          "version": "3.17.5",
+          "version": "3.17.1",
           "configurations": [],
           "scriptPhases": []
         },
