@@ -67,15 +67,7 @@ jobs:
       - name: "Get Platform Hash"
         id: get_platform_hash
         run: |
-          PLATFORM_HASH=$(node -e "
-            const fs = require('fs'), crypto = require('crypto');
-            const package = JSON.parse(fs.readFileSync('package.json'));
-            const list = [...Object.entries(package.dependencies), ...Object.entries(package.devDependencies)]
-              .sort((a, b) => a[0].localeCompare(b[0])); 
-            const text = list.map(v => v[0] + '@' + v[1])
-              .join('|');
-            console.log(crypto.createHash('sha256').update(text).digest('hex'));
-          ")
+          PLATFORM_HASH=$(./get_platform.sh)
           echo $PLATFORM_HASH;
           echo "PLATFORM_HASH=${PLATFORM_HASH}" >> $GITHUB_OUTPUT
           echo "PLATFORM_HASH=${PLATFORM_HASH}" >> $GITHUB_ENV
@@ -189,6 +181,8 @@ jobs:
           cp -R ios/Sources artifact/Sources
           cp README.md artifact/README.md
           cp package.json artifact/package.json
+          node -e 'const fs = require("fs"); fs.writeFileSync("artifact/platform.txt", process.env.PLATFORM_HASH, "utf-8");'
+          echo "PLATFORM_HASH=$PLATFORM_HASH" >> $GITHUB_STEP_SUMMARY
       
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
