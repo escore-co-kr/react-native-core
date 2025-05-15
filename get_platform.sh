@@ -61,7 +61,9 @@ detectNonNativeLib() {
 }
 
 # Install lib
-npm install --silent > /dev/null 2>&1
+[ "$SKIP_INSTALL" != "TRUE" ] && {
+    npm install --silent > /dev/null 2>&1
+}
 
 if [ $# -eq 0 ]; then
     getPlatformHash
