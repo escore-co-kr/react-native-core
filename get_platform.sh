@@ -62,6 +62,7 @@ detectNonNativeLib() {
 
 # Install lib
 [ "$SKIP_INSTALL" != "TRUE" ] && {
+    echo "npm install" >&2
     npm install --silent > /dev/null 2>&1
 }
 
