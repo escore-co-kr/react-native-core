@@ -1,4 +1,4 @@
-# 📦 Prebuild SPM Project::Release
+# 📦 Prebuild SPM Project::Debug
 ### PLATFORM_HASH
 ```
 7790a3ca64cc5e2f35a1555f06110b3a9758f8d0023aa022999d3fcb7cdf67c6
@@ -31,6 +31,7 @@
 | `react-native-sqlite-storage` | 6.0.1 |
 | `react-native-svg` | 15.11.1 |
 | `react-native-svg-transformer` | 1.5.0 |
+| `react-native-toast-message` | ^2.3.0 |
 | `react-native-webview` | 13.13.2 |
 ---
 
