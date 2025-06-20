@@ -31,6 +31,7 @@
 | `react-native-sqlite-storage` | 6.0.1 |
 | `react-native-svg` | 15.11.1 |
 | `react-native-svg-transformer` | 1.5.0 |
+| `react-native-toast-message` | ^2.3.0 |
 | `react-native-webview` | 13.13.2 |
 ---
 
