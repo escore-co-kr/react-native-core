@@ -1,7 +1,7 @@
 {
   "root": "/Users/runner/work/react-native-core/react-native-core",
   "reactNativePath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native",
-  "reactNativeVersion": "0.77",
+  "reactNativeVersion": "0.83",
   "dependencies": {
     "@react-native-async-storage/async-storage": {
       "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-async-storage/async-storage",
@@ -9,7 +9,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-async-storage/async-storage/RNCAsyncStorage.podspec",
-          "version": "2.1.1",
+          "version": "2.2.0",
           "configurations": [],
           "scriptPhases": []
         },
@@ -34,7 +34,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-community/datetimepicker/RNDateTimePicker.podspec",
-          "version": "8.3.0",
+          "version": "8.6.0",
           "configurations": [],
           "scriptPhases": []
         },
@@ -59,7 +59,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-device-info/RNDeviceInfo.podspec",
-          "version": "14.0.4",
+          "version": "15.0.1",
           "configurations": [],
           "scriptPhases": []
         },
@@ -83,7 +83,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-gesture-handler/RNGestureHandler.podspec",
-          "version": "2.24.0",
+          "version": "2.30.0",
           "configurations": [],
           "scriptPhases": []
         },
@@ -111,7 +111,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-google-mobile-ads/RNGoogleMobileAds.podspec",
-          "version": "14.9.1",
+          "version": "16.0.1",
           "configurations": [],
           "scriptPhases": [
             {
@@ -168,7 +168,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-pager-view/react-native-pager-view.podspec",
-          "version": "6.6.1",
+          "version": "8.0.0",
           "configurations": [],
           "scriptPhases": []
         },
@@ -195,7 +195,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-reanimated/RNReanimated.podspec",
-          "version": "3.17.1",
+          "version": "4.2.1",
           "configurations": [],
           "scriptPhases": []
         },
@@ -220,7 +220,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-safe-area-context/react-native-safe-area-context.podspec",
-          "version": "5.2.0",
+          "version": "5.6.2",
           "configurations": [],
           "scriptPhases": []
         },
@@ -248,7 +248,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-screens/RNScreens.podspec",
-          "version": "4.8.0",
+          "version": "4.20.0",
           "configurations": [],
           "scriptPhases": []
         },
@@ -269,7 +269,9 @@
             "RNSScreenComponentDescriptor",
             "RNSScreenFooterComponentDescriptor",
             "RNSScreenContentWrapperComponentDescriptor",
-            "RNSModalScreenComponentDescriptor"
+            "RNSModalScreenComponentDescriptor",
+            "RNSBottomTabsComponentDescriptor",
+            "RNSSafeAreaViewComponentDescriptor"
           ],
           "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt",
           "cxxModuleCMakeListsModuleName": null,
@@ -309,7 +311,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-svg/RNSVG.podspec",
-          "version": "15.11.1",
+          "version": "15.15.1",
           "configurations": [],
           "scriptPhases": []
         },
@@ -364,7 +366,7 @@
       "platforms": {
         "ios": {
           "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-webview/react-native-webview.podspec",
-          "version": "13.13.2",
+          "version": "13.16.0",
           "configurations": [],
           "scriptPhases": []
         },
@@ -378,6 +380,56 @@
             "RNCWebViewComponentDescriptor"
           ],
           "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-webview/android/build/generated/source/codegen/jni/CMakeLists.txt",
+          "cxxModuleCMakeListsModuleName": null,
+          "cxxModuleCMakeListsPath": null,
+          "cxxModuleHeaderName": null,
+          "isPureCxxDependency": false
+        }
+      }
+    },
+    "react-native-worklets": {
+      "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets",
+      "name": "react-native-worklets",
+      "platforms": {
+        "ios": {
+          "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets/RNWorklets.podspec",
+          "version": "0.7.2",
+          "configurations": [],
+          "scriptPhases": []
+        },
+        "android": {
+          "sourceDir": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets/android",
+          "packageImportPath": "import com.swmansion.worklets.WorkletsPackage;",
+          "packageInstance": "new WorkletsPackage()",
+          "buildTypes": [],
+          "libraryName": "rnworklets",
+          "componentDescriptors": [],
+          "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets/android/build/generated/source/codegen/jni/CMakeLists.txt",
+          "cxxModuleCMakeListsModuleName": null,
+          "cxxModuleCMakeListsPath": null,
+          "cxxModuleHeaderName": null,
+          "isPureCxxDependency": false
+        }
+      }
+    },
+    "react-native-worklets-core": {
+      "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets-core",
+      "name": "react-native-worklets-core",
+      "platforms": {
+        "ios": {
+          "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets-core/react-native-worklets-core.podspec",
+          "version": "1.6.2",
+          "configurations": [],
+          "scriptPhases": []
+        },
+        "android": {
+          "sourceDir": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets-core/android",
+          "packageImportPath": "import com.worklets.WorkletsCorePackage;",
+          "packageInstance": "new WorkletsCorePackage()",
+          "buildTypes": [],
+          "libraryName": "RNWorkletsSpec",
+          "componentDescriptors": [],
+          "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets-core/android/build/generated/source/codegen/jni/CMakeLists.txt",
           "cxxModuleCMakeListsModuleName": null,
           "cxxModuleCMakeListsPath": null,
           "cxxModuleHeaderName": null,
@@ -558,6 +610,11 @@
         {
           "name": "--outputPath <path>",
           "description": "Path where generated artifacts will be output to."
+        },
+        {
+          "name": "--source <string>",
+          "description": "Whether the script is invoked from an `app` or a `library`",
+          "default": "app"
         }
       ]
     },
@@ -658,6 +715,10 @@
           "description": "Force CocoaPods installation"
         },
         {
+          "name": "--only-pods",
+          "description": "Only install Cocoapods, do not build the app"
+        },
+        {
           "name": "--device [string]",
           "description": "Explicitly set the device to use by name or by unique device identifier . If the value is not provided,the app will run on the first available physical device."
         }
@@ -712,6 +773,10 @@
         {
           "name": "--force-pods",
           "description": "Force CocoaPods installation"
+        },
+        {
+          "name": "--only-pods",
+          "description": "Only install Cocoapods, do not build the app"
         },
         {
           "name": "--device [string]",
