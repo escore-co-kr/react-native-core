@@ -3,6 +3,33 @@
   "reactNativePath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native",
   "reactNativeVersion": "0.83",
   "dependencies": {
+    "@d11/react-native-fast-image": {
+      "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/@d11/react-native-fast-image",
+      "name": "@d11/react-native-fast-image",
+      "platforms": {
+        "ios": {
+          "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/@d11/react-native-fast-image/RNFastImage.podspec",
+          "version": "8.13.0",
+          "configurations": [],
+          "scriptPhases": []
+        },
+        "android": {
+          "sourceDir": "/Users/runner/work/react-native-core/react-native-core/node_modules/@d11/react-native-fast-image/android",
+          "packageImportPath": "import com.dylanvann.fastimage.FastImageViewPackage;",
+          "packageInstance": "new FastImageViewPackage()",
+          "buildTypes": [],
+          "libraryName": "RNFastImageSpec",
+          "componentDescriptors": [
+            "FastImageViewComponentDescriptor"
+          ],
+          "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/@d11/react-native-fast-image/android/build/generated/source/codegen/jni/CMakeLists.txt",
+          "cxxModuleCMakeListsModuleName": null,
+          "cxxModuleCMakeListsPath": null,
+          "cxxModuleHeaderName": null,
+          "isPureCxxDependency": false
+        }
+      }
+    },
     "@react-native-async-storage/async-storage": {
       "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-async-storage/async-storage",
       "name": "@react-native-async-storage/async-storage",
@@ -21,31 +48,6 @@
           "libraryName": "rnasyncstorage",
           "componentDescriptors": [],
           "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/CMakeLists.txt",
-          "cxxModuleCMakeListsModuleName": null,
-          "cxxModuleCMakeListsPath": null,
-          "cxxModuleHeaderName": null,
-          "isPureCxxDependency": false
-        }
-      }
-    },
-    "@react-native-community/datetimepicker": {
-      "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-community/datetimepicker",
-      "name": "@react-native-community/datetimepicker",
-      "platforms": {
-        "ios": {
-          "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-community/datetimepicker/RNDateTimePicker.podspec",
-          "version": "8.6.0",
-          "configurations": [],
-          "scriptPhases": []
-        },
-        "android": {
-          "sourceDir": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-community/datetimepicker/android",
-          "packageImportPath": "import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;",
-          "packageInstance": "new RNDateTimePickerPackage()",
-          "buildTypes": [],
-          "libraryName": "RNDateTimePickerCGen",
-          "componentDescriptors": [],
-          "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/@react-native-community/datetimepicker/android/build/generated/source/codegen/jni/CMakeLists.txt",
           "cxxModuleCMakeListsModuleName": null,
           "cxxModuleCMakeListsPath": null,
           "cxxModuleHeaderName": null,
@@ -143,6 +145,36 @@
         }
       }
     },
+    "react-native-keyboard-controller": {
+      "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-keyboard-controller",
+      "name": "react-native-keyboard-controller",
+      "platforms": {
+        "ios": {
+          "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-keyboard-controller/react-native-keyboard-controller.podspec",
+          "version": "1.20.6",
+          "configurations": [],
+          "scriptPhases": []
+        },
+        "android": {
+          "sourceDir": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-keyboard-controller/android",
+          "packageImportPath": "import com.reactnativekeyboardcontroller.KeyboardControllerPackage;",
+          "packageInstance": "new KeyboardControllerPackage()",
+          "buildTypes": [],
+          "libraryName": "RNKC",
+          "componentDescriptors": [
+            "KeyboardControllerViewComponentDescriptor",
+            "KeyboardGestureAreaComponentDescriptor",
+            "OverKeyboardViewComponentDescriptor",
+            "KeyboardBackgroundViewComponentDescriptor"
+          ],
+          "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-keyboard-controller/android/src/main/jni/CMakeLists.txt",
+          "cxxModuleCMakeListsModuleName": null,
+          "cxxModuleCMakeListsPath": null,
+          "cxxModuleHeaderName": null,
+          "isPureCxxDependency": false
+        }
+      }
+    },
     "react-native-navigation-bar-color": {
       "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-navigation-bar-color",
       "name": "react-native-navigation-bar-color",
@@ -182,6 +214,31 @@
             "RNCViewPagerComponentDescriptor"
           ],
           "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-pager-view/android/build/generated/source/codegen/jni/CMakeLists.txt",
+          "cxxModuleCMakeListsModuleName": null,
+          "cxxModuleCMakeListsPath": null,
+          "cxxModuleHeaderName": null,
+          "isPureCxxDependency": false
+        }
+      }
+    },
+    "react-native-permissions": {
+      "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-permissions",
+      "name": "react-native-permissions",
+      "platforms": {
+        "ios": {
+          "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-permissions/RNPermissions.podspec",
+          "version": "5.4.4",
+          "configurations": [],
+          "scriptPhases": []
+        },
+        "android": {
+          "sourceDir": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-permissions/android",
+          "packageImportPath": "import com.zoontek.rnpermissions.RNPermissionsPackage;",
+          "packageInstance": "new RNPermissionsPackage()",
+          "buildTypes": [],
+          "libraryName": "RNPermissionsSpec",
+          "componentDescriptors": [],
+          "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-permissions/android/build/generated/source/codegen/jni/CMakeLists.txt",
           "cxxModuleCMakeListsModuleName": null,
           "cxxModuleCMakeListsPath": null,
           "cxxModuleHeaderName": null,
@@ -405,31 +462,6 @@
           "libraryName": "rnworklets",
           "componentDescriptors": [],
           "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets/android/build/generated/source/codegen/jni/CMakeLists.txt",
-          "cxxModuleCMakeListsModuleName": null,
-          "cxxModuleCMakeListsPath": null,
-          "cxxModuleHeaderName": null,
-          "isPureCxxDependency": false
-        }
-      }
-    },
-    "react-native-worklets-core": {
-      "root": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets-core",
-      "name": "react-native-worklets-core",
-      "platforms": {
-        "ios": {
-          "podspecPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets-core/react-native-worklets-core.podspec",
-          "version": "1.6.2",
-          "configurations": [],
-          "scriptPhases": []
-        },
-        "android": {
-          "sourceDir": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets-core/android",
-          "packageImportPath": "import com.worklets.WorkletsCorePackage;",
-          "packageInstance": "new WorkletsCorePackage()",
-          "buildTypes": [],
-          "libraryName": "RNWorkletsSpec",
-          "componentDescriptors": [],
-          "cmakeListsPath": "/Users/runner/work/react-native-core/react-native-core/node_modules/react-native-worklets-core/android/build/generated/source/codegen/jni/CMakeLists.txt",
           "cxxModuleCMakeListsModuleName": null,
           "cxxModuleCMakeListsPath": null,
           "cxxModuleHeaderName": null,
