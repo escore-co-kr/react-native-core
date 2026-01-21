@@ -35,7 +35,7 @@ security set-keychain-settings -lut 21600 "$KEYCHAIN_NAME"
 security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_NAME"
 
 # 2) p12 import (codesign이 쓸 수 있게)
-security import $SRCROOT/.scripts/cert.p12 -k "$KEYCHAIN_NAME" -P "$CERT_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
+security import $SRCROOT/cert.p12 -k "$KEYCHAIN_NAME" -P "$CERT_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
 
 # 3) 키 접근 권한(필수: codesign에서 private key 접근 허용)
 # Apple Silicon/최신 macOS에서 특히 중요
