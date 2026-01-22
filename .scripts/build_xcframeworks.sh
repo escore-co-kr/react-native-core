@@ -25,6 +25,7 @@ function archive() {
         BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
         DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
 
+      rm -rf $SRCROOT/$PROJECT-$SDK.xcarchive/Products/Library/Frameworks/SDWebImage.framework
       echo "✅ Archive complete: $SDK $configuration"
   done
     
