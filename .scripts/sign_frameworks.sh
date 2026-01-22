@@ -49,7 +49,7 @@ security default-keychain -s "$KEYCHAIN_NAME"
 security find-identity -v -p codesigning "$KEYCHAIN_NAME"
 
 
-XCFRAMEWORKS_DIR="$SRCROOT/ios/Frameworks"
+XCFRAMEWORKS_DIR="$SRCROOT/../ios/Frameworks"
 
 if [[ ! -d "$XCFRAMEWORKS_DIR" ]]; then
   echo "No ios/Frameworks directory found: $XCFRAMEWORKS_DIR"
@@ -71,7 +71,7 @@ find "$XCFRAMEWORKS_DIR" -maxdepth 1 -type d -name "*.xcframework" -print0 | whi
     /usr/bin/codesign --verify --strict --verbose=1 "$FW_PATH"
     echo "✅ signed & verified: $(basename "$FW_PATH")"
   done
-  
+
 done
 
 
