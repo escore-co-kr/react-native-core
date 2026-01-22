@@ -79,9 +79,9 @@ let package = Package(
                 "React_runtimeexecutor",
                 "React_runtimescheduler",
                 "React_utils",
-                "SDWebImageAVIFCoder",
-                "SDWebImageSVGCoder",
-                "SDWebImageWebPCoder",
+                // "SDWebImageAVIFCoder",
+                // "SDWebImageSVGCoder",
+                // "SDWebImageWebPCoder",
                 "SocketRocket",
                 "SwiftUIIntrospect",
                 "UserMessagingPlatform",
@@ -370,18 +370,18 @@ let package = Package(
             name: "React_utils",
             url: "https://escore.co.kr/internal/ios/rn/b2b19fa0dead93686c7a76246c89c92945672abea287327d6da1097dbd159eb2.zip", checksum: "b2b19fa0dead93686c7a76246c89c92945672abea287327d6da1097dbd159eb2"
         ),
-        .binaryTarget(
-            name: "SDWebImageAVIFCoder",
-            url: "https://escore.co.kr/internal/ios/rn/f23351113d6fbf8d9f5df295bc104b724e50d4aae6c8512e07ead07ecf12bd77.zip", checksum: "f23351113d6fbf8d9f5df295bc104b724e50d4aae6c8512e07ead07ecf12bd77"
-        ),
-        .binaryTarget(
-            name: "SDWebImageSVGCoder",
-            url: "https://escore.co.kr/internal/ios/rn/2701ed14e9c150d003ce71b611593a43ea2b8b342e853dc4b4cff61a1c52e005.zip", checksum: "2701ed14e9c150d003ce71b611593a43ea2b8b342e853dc4b4cff61a1c52e005"
-        ),
-        .binaryTarget(
-            name: "SDWebImageWebPCoder",
-            url: "https://escore.co.kr/internal/ios/rn/21f1513e33a1ac142ce0af2eaf39cc2144b4039c3e34a0097cf22ecc186ceafe.zip", checksum: "21f1513e33a1ac142ce0af2eaf39cc2144b4039c3e34a0097cf22ecc186ceafe"
-        ),
+        // .binaryTarget(
+        //     name: "SDWebImageAVIFCoder",
+        //     url: "https://escore.co.kr/internal/ios/rn/f23351113d6fbf8d9f5df295bc104b724e50d4aae6c8512e07ead07ecf12bd77.zip", checksum: "f23351113d6fbf8d9f5df295bc104b724e50d4aae6c8512e07ead07ecf12bd77"
+        // ),
+        // .binaryTarget(
+        //     name: "SDWebImageSVGCoder",
+        //     url: "https://escore.co.kr/internal/ios/rn/2701ed14e9c150d003ce71b611593a43ea2b8b342e853dc4b4cff61a1c52e005.zip", checksum: "2701ed14e9c150d003ce71b611593a43ea2b8b342e853dc4b4cff61a1c52e005"
+        // ),
+        // .binaryTarget(
+        //     name: "SDWebImageWebPCoder",
+        //     url: "https://escore.co.kr/internal/ios/rn/21f1513e33a1ac142ce0af2eaf39cc2144b4039c3e34a0097cf22ecc186ceafe.zip", checksum: "21f1513e33a1ac142ce0af2eaf39cc2144b4039c3e34a0097cf22ecc186ceafe"
+        // ),
         .binaryTarget(
             name: "SocketRocket",
             url: "https://escore.co.kr/internal/ios/rn/ad8b168ec8b2b32e52806bbbc48ae60ba3a5c9b8fb72ffc573c2e3d7cb1ed689.zip", checksum: "ad8b168ec8b2b32e52806bbbc48ae60ba3a5c9b8fb72ffc573c2e3d7cb1ed689"
