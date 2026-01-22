@@ -140,6 +140,7 @@ jobs:
         working-directory: ios
       
       - name: Sign Frameworks
+        if: ${{ matrix.environment == 'Release' }}
         run: |
           echo "$CERT_BASE64" | base64 --decode > cert.p12
           ./sign_frameworks.sh

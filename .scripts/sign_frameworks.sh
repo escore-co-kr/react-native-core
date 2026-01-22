@@ -61,12 +61,7 @@ find "$XCFRAMEWORKS_DIR" -maxdepth 1 -type d -name "*.xcframework" -print0 | whi
 
   # xcframework 내부의 각 .framework에 대해 서명
   find "$XCFRAMEWORK" -type d -name "*.framework" -print0 | while IFS= read -r -d '' FW_PATH; do
-    if /usr/bin/codesign -dv --verbose=1 "$FW_PATH" >/dev/null 2>&1; then
-      echo "SKIP (already signed): $(basename "$FW_PATH")"
-      continue
-    fi
-
-    echo "PATCH Sign: $(basename "$FW_PATH")"
+    echo "PATCH Sign (force): $(basename "$FW_PATH")"
     /usr/bin/codesign --force --timestamp --sign "$CERT_NAME" "$FW_PATH"
     /usr/bin/codesign --verify --strict --verbose=1 "$FW_PATH"
     echo "✅ signed & verified: $(basename "$FW_PATH")"
