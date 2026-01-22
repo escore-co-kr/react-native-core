@@ -139,15 +139,15 @@ jobs:
         run: ./build_xcframeworks.sh
         working-directory: ios
       
-      # - name: Sign Frameworks
-      #   run: |
-      #     echo "$CERT_BASE64" | base64 --decode > cert.p12
-      #     ./sign_frameworks.sh
-      #   working-directory: .scripts
-      #   env:
-      #     CERT_NAME: ${{ vars.CERT_NAME }}
-      #     CERT_BASE64: ${{ secrets.CERT_BASE64 }}
-      #     CERT_PASSWORD: ${{ secrets.CERT_PASSWORD }}
+      - name: Sign Frameworks
+        run: |
+          echo "$CERT_BASE64" | base64 --decode > cert.p12
+          ./sign_frameworks.sh
+        working-directory: .scripts
+        env:
+          CERT_NAME: ${{ vars.CERT_NAME }}
+          CERT_BASE64: ${{ secrets.CERT_BASE64 }}
+          CERT_PASSWORD: ${{ secrets.CERT_PASSWORD }}
 
       - name: Discover Working Directory (After Build)
         run: |

@@ -49,24 +49,18 @@ security default-keychain -s "$KEYCHAIN_NAME"
 security find-identity -v -p codesigning "$KEYCHAIN_NAME"
 
 
-ARCHIVE_ROOT=$SRCROOT/../ios
+XCFRAMEWORKS_DIR="$SRCROOT/ios/Frameworks"
 
-# find "$XCFRAMEWORKS_DIR" -path "*_CodeSignature*" | head
+if [[ ! -d "$XCFRAMEWORKS_DIR" ]]; then
+  echo "No ios/Frameworks directory found: $XCFRAMEWORKS_DIR"
+  exit 1
+fi
 
-find "$ARCHIVE_ROOT" -type d -name "*.xcarchive" -print0 | while IFS= read -r -d '' ARCHIVE_DIR; do
-  echo "xcarchive found: $ARCHIVE_DIR"
-  # FRAMEWORKS_DIR=$ARCHIVE_DIR/Products/Library/Frameworks
-  # echo $FRAMEWORKS_DIR
-  FRAMEWORKS_DIR="$ARCHIVE_DIR/Products/Library/Frameworks"
-  if [[ ! -d "$FRAMEWORKS_DIR" ]]; then
-    echo "No Frameworks dir (skip): $FRAMEWORKS_DIR"
-    continue
-  fi
+find "$XCFRAMEWORKS_DIR" -maxdepth 1 -type d -name "*.xcframework" -print0 | while IFS= read -r -d '' XCFRAMEWORK; do
+  echo "xcframework found: $XCFRAMEWORK"
 
-  # Frameworks 폴더 아래 모든 .framework 서명
-  find "$FRAMEWORKS_DIR" -maxdepth 1 -type d -name "*.framework" -print0 | \
-  while IFS= read -r -d '' FW_PATH; do
-    # 서명 여부 확인 (adhoc 포함: codesign -dv 성공이면 signed로 간주)
+  # xcframework 내부의 각 .framework에 대해 서명
+  find "$XCFRAMEWORK" -type d -name "*.framework" -print0 | while IFS= read -r -d '' FW_PATH; do
     if /usr/bin/codesign -dv --verbose=1 "$FW_PATH" >/dev/null 2>&1; then
       echo "SKIP (already signed): $(basename "$FW_PATH")"
       continue
@@ -77,7 +71,7 @@ find "$ARCHIVE_ROOT" -type d -name "*.xcarchive" -print0 | while IFS= read -r -d
     /usr/bin/codesign --verify --strict --verbose=1 "$FW_PATH"
     echo "✅ signed & verified: $(basename "$FW_PATH")"
   done
-
+  
 done
 
 
