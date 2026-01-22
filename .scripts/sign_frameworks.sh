@@ -53,26 +53,31 @@ ARCHIVE_ROOT=$SRCROOT/../ios
 
 # find "$XCFRAMEWORKS_DIR" -path "*_CodeSignature*" | head
 
-for ARCHIVE_DIR in $(find "$ARCHIVE_ROOT" -type d -name "*.xcarchive"); do
+find "$ARCHIVE_ROOT" -type d -name "*.xcarchive" -print0 | while IFS= read -r -d '' ARCHIVE_DIR; do
   echo "xcarchive found: $ARCHIVE_DIR"
   # FRAMEWORKS_DIR=$ARCHIVE_DIR/Products/Library/Frameworks
   # echo $FRAMEWORKS_DIR
-  FW_PATH="$ARCHIVE_DIR/Products/Library/Frameworks/SDWebImage.framework"
-
-  if [[ ! -d "$FW_PATH" ]]; then
-    echo "❌ SDWebImage.framework를 못 찾음: $FW_PATH"
-    echo "   archive 안의 Frameworks 구조가 다른지 확인 필요"
-    continue
-  fi
-  if /usr/bin/codesign -dv --verbose=1 "$FW_PATH" >/dev/null 2>&1; then
-    echo "SKIP (already signed): $FW_PATH"
+  FRAMEWORKS_DIR="$ARCHIVE_DIR/Products/Library/Frameworks"
+  if [[ ! -d "$FRAMEWORKS_DIR" ]]; then
+    echo "No Frameworks dir (skip): $FRAMEWORKS_DIR"
     continue
   fi
 
-  echo "PATCH Sign"
+  # Frameworks 폴더 아래 모든 .framework 서명
+  find "$FRAMEWORKS_DIR" -maxdepth 1 -type d -name "*.framework" -print0 | \
+  while IFS= read -r -d '' FW_PATH; do
+    # 서명 여부 확인 (adhoc 포함: codesign -dv 성공이면 signed로 간주)
+    if /usr/bin/codesign -dv --verbose=1 "$FW_PATH" >/dev/null 2>&1; then
+      echo "SKIP (already signed): $(basename "$FW_PATH")"
+      continue
+    fi
 
-  /usr/bin/codesign --force --timestamp --sign "$CERT_NAME" "$FW_PATH"
-  /usr/bin/codesign --verify --strict --verbose=1 "$FW_PATH"
+    echo "PATCH Sign: $(basename "$FW_PATH")"
+    /usr/bin/codesign --force --timestamp --sign "$CERT_NAME" "$FW_PATH"
+    /usr/bin/codesign --verify --strict --verbose=1 "$FW_PATH"
+    echo "✅ signed & verified: $(basename "$FW_PATH")"
+  done
+
 done
 
 
