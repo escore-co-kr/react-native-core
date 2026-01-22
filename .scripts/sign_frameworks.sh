@@ -49,7 +49,7 @@ security default-keychain -s "$KEYCHAIN_NAME"
 security find-identity -v -p codesigning "$KEYCHAIN_NAME"
 
 
-ARCHIVE_ROOT=$SRCROOT/ios
+ARCHIVE_ROOT=$SRCROOT/../ios
 
 # find "$XCFRAMEWORKS_DIR" -path "*_CodeSignature*" | head
 
