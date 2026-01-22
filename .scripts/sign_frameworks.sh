@@ -65,6 +65,10 @@ find "$XCFRAMEWORKS_DIR" -maxdepth 1 -type d -name "*.xcframework" -print0 | whi
       echo "Skipping Mac Catalyst slice: $FW_PATH"
       continue
     fi
+    if [[ "$FW_PATH" == *"UserMessagingPlatform.xcframework"* ]]; then
+      echo "Skipping signed vendor framework: $FW_PATH"
+      continue
+    fi
     echo "PATCH Sign (force): $(basename "$FW_PATH")"
     /usr/bin/codesign --force --timestamp --sign "$CERT_NAME" "$FW_PATH"
     /usr/bin/codesign --verify --strict --verbose=1 "$FW_PATH"
