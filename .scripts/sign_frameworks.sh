@@ -61,6 +61,10 @@ find "$XCFRAMEWORKS_DIR" -maxdepth 1 -type d -name "*.xcframework" -print0 | whi
 
   # xcframework 내부의 각 .framework에 대해 서명
   find "$XCFRAMEWORK" -type d -name "*.framework" -print0 | while IFS= read -r -d '' FW_PATH; do
+    if [[ "$FW_PATH" == *"maccatalyst"* ]]; then
+      echo "Skipping Mac Catalyst slice: $FW_PATH"
+      continue
+    fi
     echo "PATCH Sign (force): $(basename "$FW_PATH")"
     /usr/bin/codesign --force --timestamp --sign "$CERT_NAME" "$FW_PATH"
     /usr/bin/codesign --verify --strict --verbose=1 "$FW_PATH"
