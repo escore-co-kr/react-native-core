@@ -10,14 +10,36 @@ const EXCLUDED = new Set([
     "SDWebImageWebPCoder",
 ]);
 
-const frameworks = fs.readdirSync(path.join(__dirname, "Frameworks"))
+function firstExisting(paths) {
+    for (const p of paths) {
+        if (fs.existsSync(p)) return p;
+    }
+    return null;
+}
+
+const frameworksDir = firstExisting([
+    path.join(__dirname, "Frameworks"),
+    path.join(__dirname, "../ios/Frameworks"),
+]);
+
+if (!frameworksDir) {
+    throw new Error("Frameworks directory not found");
+}
+
+const podfileLockPath = firstExisting([
+    path.join(__dirname, "Podfile.lock"),
+    path.join(__dirname, "../ios/Podfile.lock"),
+]);
+
+const frameworks = fs.readdirSync(frameworksDir)
     .filter(name => name.endsWith(".xcframework"))
     .map(name => name.substring(0, name.length - ".xcframework".length))
     .filter(name => !EXCLUDED.has(name));
 
-function getPodVersion(name, fallback = "5.0.0") {
+function getPodVersion(name, fallback) {
     try {
-        const lock = fs.readFileSync(path.join(__dirname, "Podfile.lock"), "utf-8");
+        if (!podfileLockPath) throw new Error("Podfile.lock not found");
+        const lock = fs.readFileSync(podfileLockPath, "utf-8");
         const match = lock.match(new RegExp(`-\\s+${name}\\s+\\(([^)]+)\\)`));
         return (match && match[1].trim()) || fallback;
     } catch {
@@ -25,11 +47,18 @@ function getPodVersion(name, fallback = "5.0.0") {
     }
 }
 
+const sdwebimageFallbacks = {
+    SDWebImage: "5.21.5",
+    SDWebImageAVIFCoder: "0.11.1",
+    SDWebImageSVGCoder: "1.7.0",
+    SDWebImageWebPCoder: "0.15.0",
+};
+
 const sdwebimagePackages = {
-    SDWebImage: { url: "https://github.com/SDWebImage/SDWebImage.git", version: getPodVersion("SDWebImage") },
-    SDWebImageAVIFCoder: { url: "https://github.com/SDWebImage/SDWebImageAVIFCoder.git", version: getPodVersion("SDWebImageAVIFCoder") },
-    SDWebImageSVGCoder: { url: "https://github.com/SDWebImage/SDWebImageSVGCoder.git", version: getPodVersion("SDWebImageSVGCoder") },
-    SDWebImageWebPCoder: { url: "https://github.com/SDWebImage/SDWebImageWebPCoder.git", version: getPodVersion("SDWebImageWebPCoder") },
+    SDWebImage: { url: "https://github.com/SDWebImage/SDWebImage.git", version: getPodVersion("SDWebImage", sdwebimageFallbacks.SDWebImage) },
+    SDWebImageAVIFCoder: { url: "https://github.com/SDWebImage/SDWebImageAVIFCoder.git", version: getPodVersion("SDWebImageAVIFCoder", sdwebimageFallbacks.SDWebImageAVIFCoder) },
+    SDWebImageSVGCoder: { url: "https://github.com/SDWebImage/SDWebImageSVGCoder.git", version: getPodVersion("SDWebImageSVGCoder", sdwebimageFallbacks.SDWebImageSVGCoder) },
+    SDWebImageWebPCoder: { url: "https://github.com/SDWebImage/SDWebImageWebPCoder.git", version: getPodVersion("SDWebImageWebPCoder", sdwebimageFallbacks.SDWebImageWebPCoder) },
 };
 
 const sdwebimagePackageDecls = Object.values(sdwebimagePackages).map(
@@ -44,16 +73,17 @@ import PackageDescription
 let package = Package(
     name: "ReactNativePrebuild",
     platforms: [
-        .iOS(.v11)
-    ],
-    dependencies: [
-${sdwebimagePackageDecls}
+        .iOS(.v11),
+        .macOS(.v10_15)
     ],
     products: [
         .library(
             name: "${project}",
             targets: ["${project}"]
         )
+    ],
+    dependencies: [
+${sdwebimagePackageDecls}
     ],
     targets: [
         // 메인 타겟: 모든 프레임워크를 포함
