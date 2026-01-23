@@ -41,7 +41,9 @@ function getPodVersion(name, fallback) {
         if (!podfileLockPath) throw new Error("Podfile.lock not found");
         const lock = fs.readFileSync(podfileLockPath, "utf-8");
         const match = lock.match(new RegExp(`-\\s+${name}\\s+\\(([^)]+)\\)`));
-        return (match && match[1].trim()) || fallback;
+        const raw = (match && match[1].trim()) || "";
+        const semver = raw.match(/(\\d+(?:\\.\\d+){1,2})/);
+        return (semver && semver[1]) || fallback;
     } catch {
         return fallback;
     }
