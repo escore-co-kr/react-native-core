@@ -102,9 +102,7 @@ let package = Package(
                 "jsinspector_modernnetwork",
                 "jsinspector_moderntracing",
                 "jsireact",
-                "libavif",
                 "libdav1d",
-                "libwebp",
                 "logger",
                 "oscompat",
                 "react_native_keyboard_controller",
@@ -132,371 +130,363 @@ let package = Package(
         ),
         .binaryTarget(
             name: "CoreModules",
-            url: "https://escore.co.kr/internal/ios/rn/6c3aeed4023c9410e86702296f592f8cfbbe4b9e08bbf12eea300b666b5e4cc8.zip", checksum: "6c3aeed4023c9410e86702296f592f8cfbbe4b9e08bbf12eea300b666b5e4cc8"
+            url: "https://escore.co.kr/internal/ios/rn/221865cb886fed6b86ce2905f482c00e3ebcbb25f687572ae21a9ce95fa36e44.zip", checksum: "221865cb886fed6b86ce2905f482c00e3ebcbb25f687572ae21a9ce95fa36e44"
         ),
         .binaryTarget(
             name: "DoubleConversion",
-            url: "https://escore.co.kr/internal/ios/rn/524910731bbb48b990228a1daf1c7d7d458322e93184ef1624ab6d1504631089.zip", checksum: "524910731bbb48b990228a1daf1c7d7d458322e93184ef1624ab6d1504631089"
+            url: "https://escore.co.kr/internal/ios/rn/6f011f5acd117e702fe136c4577cfacd9049a2ccb19cddd5268756e127ca1dc5.zip", checksum: "6f011f5acd117e702fe136c4577cfacd9049a2ccb19cddd5268756e127ca1dc5"
         ),
         .binaryTarget(
             name: "GoogleMobileAds",
-            url: "https://escore.co.kr/internal/ios/rn/096a223b69a91597e21ffd967373428d0283550ae25466d79bf2e3c2a8343daf.zip", checksum: "096a223b69a91597e21ffd967373428d0283550ae25466d79bf2e3c2a8343daf"
+            url: "https://escore.co.kr/internal/ios/rn/dc44f2f7849cc40a1f7dc715e3e8c3c4c17150390f044f9561bdc323b6fa6b11.zip", checksum: "dc44f2f7849cc40a1f7dc715e3e8c3c4c17150390f044f9561bdc323b6fa6b11"
         ),
         .binaryTarget(
             name: "Google_Mobile_Ads_SDK",
-            url: "https://escore.co.kr/internal/ios/rn/889ac9c7c3c0f405ed0ba3301fd1afba78c1ce20545bb1656d48b9db116c4301.zip", checksum: "889ac9c7c3c0f405ed0ba3301fd1afba78c1ce20545bb1656d48b9db116c4301"
+            url: "https://escore.co.kr/internal/ios/rn/818870ad55b0b734bcd75248fd3cae3675675e87ab20672fc8414135fe4b4848.zip", checksum: "818870ad55b0b734bcd75248fd3cae3675675e87ab20672fc8414135fe4b4848"
         ),
         .binaryTarget(
             name: "JSITooling",
-            url: "https://escore.co.kr/internal/ios/rn/ce120126f9b0fbbe8f0f681d245d4397ebdfc425b05f5a4509d78ac742969421.zip", checksum: "ce120126f9b0fbbe8f0f681d245d4397ebdfc425b05f5a4509d78ac742969421"
+            url: "https://escore.co.kr/internal/ios/rn/2772c2f9a410943b6ceaeaa48b4dd1386ed5a40816654348bf118b545eda2b44.zip", checksum: "2772c2f9a410943b6ceaeaa48b4dd1386ed5a40816654348bf118b545eda2b44"
         ),
         .binaryTarget(
             name: "Pods_ReactNativePrebuild",
-            url: "https://escore.co.kr/internal/ios/rn/8250efc3aadc7b105dd5e9985379adc1eb81ea20e3916da57a2d3f7080e9fe99.zip", checksum: "8250efc3aadc7b105dd5e9985379adc1eb81ea20e3916da57a2d3f7080e9fe99"
+            url: "https://escore.co.kr/internal/ios/rn/59b2a759fa9afc2809f13d559258b026639407570ea5aed01b7188ad2993cf24.zip", checksum: "59b2a759fa9afc2809f13d559258b026639407570ea5aed01b7188ad2993cf24"
         ),
         .binaryTarget(
             name: "RCTAnimation",
-            url: "https://escore.co.kr/internal/ios/rn/d86b4ed0331e16abbceea3e697183455a0374dca15d615f4d5b232ac7335efd4.zip", checksum: "d86b4ed0331e16abbceea3e697183455a0374dca15d615f4d5b232ac7335efd4"
+            url: "https://escore.co.kr/internal/ios/rn/384373889a348ffe53b83430c6c9d940c69a3bc488f8bdc67571983e3410cb2c.zip", checksum: "384373889a348ffe53b83430c6c9d940c69a3bc488f8bdc67571983e3410cb2c"
         ),
         .binaryTarget(
             name: "RCTBlob",
-            url: "https://escore.co.kr/internal/ios/rn/89069e2e54435f566ff84d1938ea4d3a5b7e2028bc7e62f431bfe379233c65d9.zip", checksum: "89069e2e54435f566ff84d1938ea4d3a5b7e2028bc7e62f431bfe379233c65d9"
+            url: "https://escore.co.kr/internal/ios/rn/188a86e57b31709407a1666bc163901e6934e7daa4ce6e7ec87f45d032c7c9d1.zip", checksum: "188a86e57b31709407a1666bc163901e6934e7daa4ce6e7ec87f45d032c7c9d1"
         ),
         .binaryTarget(
             name: "RCTDeprecation",
-            url: "https://escore.co.kr/internal/ios/rn/30333b6bade6713d93180dd57525dcf0bb29443e88c75c90522a011764eabd0f.zip", checksum: "30333b6bade6713d93180dd57525dcf0bb29443e88c75c90522a011764eabd0f"
+            url: "https://escore.co.kr/internal/ios/rn/7a352ced1782b8295f3be5450d3714497d4c773c0013020457f48125133fd036.zip", checksum: "7a352ced1782b8295f3be5450d3714497d4c773c0013020457f48125133fd036"
         ),
         .binaryTarget(
             name: "RCTFabric",
-            url: "https://escore.co.kr/internal/ios/rn/aeb941500102272c32078077cb2742b0a727571591e3192c133f00bb087cfa8d.zip", checksum: "aeb941500102272c32078077cb2742b0a727571591e3192c133f00bb087cfa8d"
+            url: "https://escore.co.kr/internal/ios/rn/306da4e9868e323728760ddb62f5b05de61141d6d54dbd8cad38620831240278.zip", checksum: "306da4e9868e323728760ddb62f5b05de61141d6d54dbd8cad38620831240278"
         ),
         .binaryTarget(
             name: "RCTImage",
-            url: "https://escore.co.kr/internal/ios/rn/e587634a3f9e51d9617b4e3a6a804fc9b880013c86882ec7e1cd26483c3de266.zip", checksum: "e587634a3f9e51d9617b4e3a6a804fc9b880013c86882ec7e1cd26483c3de266"
+            url: "https://escore.co.kr/internal/ios/rn/afd76915c7fe66c7b7c6b899f5e647bbb0befce24a5d98feb1c849c2044ba3fa.zip", checksum: "afd76915c7fe66c7b7c6b899f5e647bbb0befce24a5d98feb1c849c2044ba3fa"
         ),
         .binaryTarget(
             name: "RCTLinking",
-            url: "https://escore.co.kr/internal/ios/rn/36a6eb631787a1c1e8039afd97eef84fc658893be856b7f32f888df389ae86e3.zip", checksum: "36a6eb631787a1c1e8039afd97eef84fc658893be856b7f32f888df389ae86e3"
+            url: "https://escore.co.kr/internal/ios/rn/cbbd7195d142623fa983919f26951ce1874f124c2505b38e698dfb95e8b4da53.zip", checksum: "cbbd7195d142623fa983919f26951ce1874f124c2505b38e698dfb95e8b4da53"
         ),
         .binaryTarget(
             name: "RCTNetwork",
-            url: "https://escore.co.kr/internal/ios/rn/e853c24330a66a9f70ddad946b96b0f7264dd4f350481ca2988a5a34d2536ad5.zip", checksum: "e853c24330a66a9f70ddad946b96b0f7264dd4f350481ca2988a5a34d2536ad5"
+            url: "https://escore.co.kr/internal/ios/rn/c8bd093185eb579821c64ee94fce1701f9dfc0e23e9a34b91a7fe9e71ae32f94.zip", checksum: "c8bd093185eb579821c64ee94fce1701f9dfc0e23e9a34b91a7fe9e71ae32f94"
         ),
         .binaryTarget(
             name: "RCTRuntime",
-            url: "https://escore.co.kr/internal/ios/rn/481cfa1c527eac52e5963bcc4d7e8e9d2ebec21f849c031b5bb8c01676de7d63.zip", checksum: "481cfa1c527eac52e5963bcc4d7e8e9d2ebec21f849c031b5bb8c01676de7d63"
+            url: "https://escore.co.kr/internal/ios/rn/1fcb0f19467a09409863cf5e63748aade5d6e828d8342135a55c3cef0b7d10bd.zip", checksum: "1fcb0f19467a09409863cf5e63748aade5d6e828d8342135a55c3cef0b7d10bd"
         ),
         .binaryTarget(
             name: "RCTSettings",
-            url: "https://escore.co.kr/internal/ios/rn/743740c9a4d7fe8b7b8fed64b50c4ecb3bdcf2670a1d763df686a4bb8407f521.zip", checksum: "743740c9a4d7fe8b7b8fed64b50c4ecb3bdcf2670a1d763df686a4bb8407f521"
+            url: "https://escore.co.kr/internal/ios/rn/49bd4683259315ef3b1e4fde60ef34489d6447ab5a5633fb5ede8d8f94039db7.zip", checksum: "49bd4683259315ef3b1e4fde60ef34489d6447ab5a5633fb5ede8d8f94039db7"
         ),
         .binaryTarget(
             name: "RCTSwiftUI",
-            url: "https://escore.co.kr/internal/ios/rn/1a1f34bf29db93e0095f4ca81e51b0a3631c274c874189a825127e7cbfe30043.zip", checksum: "1a1f34bf29db93e0095f4ca81e51b0a3631c274c874189a825127e7cbfe30043"
+            url: "https://escore.co.kr/internal/ios/rn/b1b83c719937519fe391d54f85821a6d742f58bfff94e10b9a7ad2afcb84b94d.zip", checksum: "b1b83c719937519fe391d54f85821a6d742f58bfff94e10b9a7ad2afcb84b94d"
         ),
         .binaryTarget(
             name: "RCTSwiftUIWrapper",
-            url: "https://escore.co.kr/internal/ios/rn/e8c8b866ce2b208191cfb29cec5d5536091feca093d62848570c79b55a7e4abd.zip", checksum: "e8c8b866ce2b208191cfb29cec5d5536091feca093d62848570c79b55a7e4abd"
+            url: "https://escore.co.kr/internal/ios/rn/0a76af61a4fd0cba2f639e6d2ad8f43e10e7d61357d7b26e730fc7cf42cb82f8.zip", checksum: "0a76af61a4fd0cba2f639e6d2ad8f43e10e7d61357d7b26e730fc7cf42cb82f8"
         ),
         .binaryTarget(
             name: "RCTText",
-            url: "https://escore.co.kr/internal/ios/rn/792faca0d91195d7c2ac9ba8f759924817586a1d979570aa3c73eaea70deb242.zip", checksum: "792faca0d91195d7c2ac9ba8f759924817586a1d979570aa3c73eaea70deb242"
+            url: "https://escore.co.kr/internal/ios/rn/0fe723f4fc094c4cd2d7c05f4ebf7cea7d770abae4dbb511c311a2ad25c75ebd.zip", checksum: "0fe723f4fc094c4cd2d7c05f4ebf7cea7d770abae4dbb511c311a2ad25c75ebd"
         ),
         .binaryTarget(
             name: "RCTTypeSafety",
-            url: "https://escore.co.kr/internal/ios/rn/5745c39df8407c78b825e199cf95ffcb76feed55a4198e57da951ba25409dae7.zip", checksum: "5745c39df8407c78b825e199cf95ffcb76feed55a4198e57da951ba25409dae7"
+            url: "https://escore.co.kr/internal/ios/rn/e9cabecdca2f1e7ec66901b7a54f559110a5594c0d2e00038e7b82cf4e1fba8e.zip", checksum: "e9cabecdca2f1e7ec66901b7a54f559110a5594c0d2e00038e7b82cf4e1fba8e"
         ),
         .binaryTarget(
             name: "RCTVibration",
-            url: "https://escore.co.kr/internal/ios/rn/a3e006b4a144b666afde59e4c3d645626c58cb32d674510359683e6ec71779e1.zip", checksum: "a3e006b4a144b666afde59e4c3d645626c58cb32d674510359683e6ec71779e1"
+            url: "https://escore.co.kr/internal/ios/rn/e6f7908d073bfa1b347cd1e9210d98d7cfac7dc1fcb74ca4b62791682b866eb8.zip", checksum: "e6f7908d073bfa1b347cd1e9210d98d7cfac7dc1fcb74ca4b62791682b866eb8"
         ),
         .binaryTarget(
             name: "RNCAsyncStorage",
-            url: "https://escore.co.kr/internal/ios/rn/7a4f64e80de86d6d8487917748bae24af1ee4bf0f09a870734ad30de2ebd59be.zip", checksum: "7a4f64e80de86d6d8487917748bae24af1ee4bf0f09a870734ad30de2ebd59be"
+            url: "https://escore.co.kr/internal/ios/rn/388962805243375102ff00479d96fc6d3debeac20c22d2fe43fe88ee49b8ee46.zip", checksum: "388962805243375102ff00479d96fc6d3debeac20c22d2fe43fe88ee49b8ee46"
         ),
         .binaryTarget(
             name: "RNDeviceInfo",
-            url: "https://escore.co.kr/internal/ios/rn/29d6b52df24038a28299e8813a9ce84657b75ee8500e137dd9d7893a575bee30.zip", checksum: "29d6b52df24038a28299e8813a9ce84657b75ee8500e137dd9d7893a575bee30"
+            url: "https://escore.co.kr/internal/ios/rn/b3a89993d962b3c62495f640385b6b4eb20e22e36aeeb71eb97e080aacb13c28.zip", checksum: "b3a89993d962b3c62495f640385b6b4eb20e22e36aeeb71eb97e080aacb13c28"
         ),
         .binaryTarget(
             name: "RNFastImage",
-            url: "https://escore.co.kr/internal/ios/rn/b885f4780ff68992379206fc8802613e00118f56e371891cf4a93c5dddbed2fc.zip", checksum: "b885f4780ff68992379206fc8802613e00118f56e371891cf4a93c5dddbed2fc"
+            url: "https://escore.co.kr/internal/ios/rn/882100275167c87ebb75200977297110de2b46b3b129633c6f671fdccee4b0e1.zip", checksum: "882100275167c87ebb75200977297110de2b46b3b129633c6f671fdccee4b0e1"
         ),
         .binaryTarget(
             name: "RNGestureHandler",
-            url: "https://escore.co.kr/internal/ios/rn/0732d44c8ba5587d5ce76b0e1375119420eaafb967f740b025403512d43c1a84.zip", checksum: "0732d44c8ba5587d5ce76b0e1375119420eaafb967f740b025403512d43c1a84"
+            url: "https://escore.co.kr/internal/ios/rn/d5fe5bc812c9680d4e47dd9808b15dfb3eb621c786db812eab0087caa197e7c8.zip", checksum: "d5fe5bc812c9680d4e47dd9808b15dfb3eb621c786db812eab0087caa197e7c8"
         ),
         .binaryTarget(
             name: "RNGoogleMobileAds",
-            url: "https://escore.co.kr/internal/ios/rn/b86bf2a6a0ef991867b1eb24d07e492625ab82e1fc0f87aab304c272acd17ee2.zip", checksum: "b86bf2a6a0ef991867b1eb24d07e492625ab82e1fc0f87aab304c272acd17ee2"
+            url: "https://escore.co.kr/internal/ios/rn/fcd512029576b83ee108de1eb03d9103aca1cb6aaafbc92fb39e54e59dc17ed2.zip", checksum: "fcd512029576b83ee108de1eb03d9103aca1cb6aaafbc92fb39e54e59dc17ed2"
         ),
         .binaryTarget(
             name: "RNPermissions",
-            url: "https://escore.co.kr/internal/ios/rn/95e24ba35546651833a39ba1a56644c69f1dec1c81cb0cce2ec999374074f910.zip", checksum: "95e24ba35546651833a39ba1a56644c69f1dec1c81cb0cce2ec999374074f910"
+            url: "https://escore.co.kr/internal/ios/rn/dbe3deb826784ee4df769f1f748232f7e70b0a48b4fd075e25a81e24caeaa2aa.zip", checksum: "dbe3deb826784ee4df769f1f748232f7e70b0a48b4fd075e25a81e24caeaa2aa"
         ),
         .binaryTarget(
             name: "RNReanimated",
-            url: "https://escore.co.kr/internal/ios/rn/3196bdb18d2e915f5d9feab83490972fdc4c9f03db248dfe9273384a87b96591.zip", checksum: "3196bdb18d2e915f5d9feab83490972fdc4c9f03db248dfe9273384a87b96591"
+            url: "https://escore.co.kr/internal/ios/rn/77074000cb5c844f519280746431c078f2c623021815d091286f90a7fd90d7f5.zip", checksum: "77074000cb5c844f519280746431c078f2c623021815d091286f90a7fd90d7f5"
         ),
         .binaryTarget(
             name: "RNSVG",
-            url: "https://escore.co.kr/internal/ios/rn/f9fc3eaeef21b6b8d031df34b2a9dd1c9367462f72e8b40527e94bd19fd03447.zip", checksum: "f9fc3eaeef21b6b8d031df34b2a9dd1c9367462f72e8b40527e94bd19fd03447"
+            url: "https://escore.co.kr/internal/ios/rn/fc141417c883dbf01a276b49f2668ce4fe3fab2a6479fc2797996a381bf05198.zip", checksum: "fc141417c883dbf01a276b49f2668ce4fe3fab2a6479fc2797996a381bf05198"
         ),
         .binaryTarget(
             name: "RNScreens",
-            url: "https://escore.co.kr/internal/ios/rn/9b248cd6492b9744278d157d205b3aba50b7eb1004308592ec505dd68b3a4093.zip", checksum: "9b248cd6492b9744278d157d205b3aba50b7eb1004308592ec505dd68b3a4093"
+            url: "https://escore.co.kr/internal/ios/rn/a6ac26e5734e417d483f1c1c6cde58406c457e6ac4dd14c0114a63bc53f5d18b.zip", checksum: "a6ac26e5734e417d483f1c1c6cde58406c457e6ac4dd14c0114a63bc53f5d18b"
         ),
         .binaryTarget(
             name: "RNWorklets",
-            url: "https://escore.co.kr/internal/ios/rn/c9ce3e936b2ea8255b0faebc9845cdbcce1db3f442caa1ab321c94a6f8b50c1b.zip", checksum: "c9ce3e936b2ea8255b0faebc9845cdbcce1db3f442caa1ab321c94a6f8b50c1b"
+            url: "https://escore.co.kr/internal/ios/rn/d623bda5566c5858102eaa82b16442c0e432bd0bc729e0120ac25f677cfa5a80.zip", checksum: "d623bda5566c5858102eaa82b16442c0e432bd0bc729e0120ac25f677cfa5a80"
         ),
         .binaryTarget(
             name: "React",
-            url: "https://escore.co.kr/internal/ios/rn/ed16eb36b656f4bea56b8c25fc7766662d24090e0a9bb906435f9d90ef7fe3e9.zip", checksum: "ed16eb36b656f4bea56b8c25fc7766662d24090e0a9bb906435f9d90ef7fe3e9"
+            url: "https://escore.co.kr/internal/ios/rn/0b83316ef3c6ab5ea57a3e6b1bb60a88c07863df56cbd1cde2561fa72b6dacfe.zip", checksum: "0b83316ef3c6ab5ea57a3e6b1bb60a88c07863df56cbd1cde2561fa72b6dacfe"
         ),
         .binaryTarget(
             name: "ReactAppDependencyProvider",
-            url: "https://escore.co.kr/internal/ios/rn/2f84cc8c229d3557ac3aa7de74d5c2ee35b19c4262d95c0eab543b1e8a572588.zip", checksum: "2f84cc8c229d3557ac3aa7de74d5c2ee35b19c4262d95c0eab543b1e8a572588"
+            url: "https://escore.co.kr/internal/ios/rn/1f9d9105a46212253c40c1c0d28e3cf5af09094c91bf1670f59bd9cd9eed166e.zip", checksum: "1f9d9105a46212253c40c1c0d28e3cf5af09094c91bf1670f59bd9cd9eed166e"
         ),
         .binaryTarget(
             name: "ReactCodegen",
-            url: "https://escore.co.kr/internal/ios/rn/2ec0d9377b3093324042f5b24ba1cf67945ef2901802f4b4917204e1bfd25639.zip", checksum: "2ec0d9377b3093324042f5b24ba1cf67945ef2901802f4b4917204e1bfd25639"
+            url: "https://escore.co.kr/internal/ios/rn/213032f857381cb61082319184747e8bfdb4d8c5afdbef280f62ec0a3d0d6750.zip", checksum: "213032f857381cb61082319184747e8bfdb4d8c5afdbef280f62ec0a3d0d6750"
         ),
         .binaryTarget(
             name: "ReactCommon",
-            url: "https://escore.co.kr/internal/ios/rn/4b6a7170befbc2030f967247fde60f71c36193a2989a49cc880adc2a2d0e62c0.zip", checksum: "4b6a7170befbc2030f967247fde60f71c36193a2989a49cc880adc2a2d0e62c0"
+            url: "https://escore.co.kr/internal/ios/rn/cbcccc8707561245ccbe8cef29836a8864d296500df24c3d87790db735c34d17.zip", checksum: "cbcccc8707561245ccbe8cef29836a8864d296500df24c3d87790db735c34d17"
         ),
         .binaryTarget(
             name: "React_Fabric",
-            url: "https://escore.co.kr/internal/ios/rn/30869ba6fe1ecc7c1613ab43de6aeabd7614fe8a2d1a091d381c03c2ea80ae66.zip", checksum: "30869ba6fe1ecc7c1613ab43de6aeabd7614fe8a2d1a091d381c03c2ea80ae66"
+            url: "https://escore.co.kr/internal/ios/rn/5e8162e20f3f0d8da706bf46993ae0479e9890305950fd3c72389c90c14bb684.zip", checksum: "5e8162e20f3f0d8da706bf46993ae0479e9890305950fd3c72389c90c14bb684"
         ),
         .binaryTarget(
             name: "React_FabricComponents",
-            url: "https://escore.co.kr/internal/ios/rn/6cb083dc496f645187bf2a24703574c33fa04c34f54e7c60e99ab973b6b141b0.zip", checksum: "6cb083dc496f645187bf2a24703574c33fa04c34f54e7c60e99ab973b6b141b0"
+            url: "https://escore.co.kr/internal/ios/rn/745b2cfe6a7bd653c2ba70471b8cdf210fab2945e1e6b1db52081e2c3ff3b9a0.zip", checksum: "745b2cfe6a7bd653c2ba70471b8cdf210fab2945e1e6b1db52081e2c3ff3b9a0"
         ),
         .binaryTarget(
             name: "React_FabricImage",
-            url: "https://escore.co.kr/internal/ios/rn/8f13b93705991099bd04af68fafb4f19c4a2ca49c9e428aa30cd1e7c4f862335.zip", checksum: "8f13b93705991099bd04af68fafb4f19c4a2ca49c9e428aa30cd1e7c4f862335"
+            url: "https://escore.co.kr/internal/ios/rn/b36d94fb1c0bff36ad8a4b23c6318ce2017f653a3a108d27df6f10ca2a0a0b49.zip", checksum: "b36d94fb1c0bff36ad8a4b23c6318ce2017f653a3a108d27df6f10ca2a0a0b49"
         ),
         .binaryTarget(
             name: "React_ImageManager",
-            url: "https://escore.co.kr/internal/ios/rn/3ef4f8bb60db594abad39fdce2cbbfb831734830dd6d946c746d4291650234cb.zip", checksum: "3ef4f8bb60db594abad39fdce2cbbfb831734830dd6d946c746d4291650234cb"
+            url: "https://escore.co.kr/internal/ios/rn/fc1cb55c0421b37c5b2d58abdb5b9520dabb2a1811e768d7be3c0320e38bb44b.zip", checksum: "fc1cb55c0421b37c5b2d58abdb5b9520dabb2a1811e768d7be3c0320e38bb44b"
         ),
         .binaryTarget(
             name: "React_Mapbuffer",
-            url: "https://escore.co.kr/internal/ios/rn/b29dc21f8175cad842b325f85f7984837dfeb0c1b60ca11eacba25e8f81e4948.zip", checksum: "b29dc21f8175cad842b325f85f7984837dfeb0c1b60ca11eacba25e8f81e4948"
+            url: "https://escore.co.kr/internal/ios/rn/0125c1be4d4684ea30acff71b92e80fbd5a6f506d710c6e48c97e93fb7aaf594.zip", checksum: "0125c1be4d4684ea30acff71b92e80fbd5a6f506d710c6e48c97e93fb7aaf594"
         ),
         .binaryTarget(
             name: "React_NativeModulesApple",
-            url: "https://escore.co.kr/internal/ios/rn/a5a953a262bec736523e7602406c64f0ed71314424ace0f7647cdecb00ef47f6.zip", checksum: "a5a953a262bec736523e7602406c64f0ed71314424ace0f7647cdecb00ef47f6"
+            url: "https://escore.co.kr/internal/ios/rn/bebe0852bd38f732823b0de0efdd4203012e1557b16f0213907199e4b9ff7787.zip", checksum: "bebe0852bd38f732823b0de0efdd4203012e1557b16f0213907199e4b9ff7787"
         ),
         .binaryTarget(
             name: "React_RCTAppDelegate",
-            url: "https://escore.co.kr/internal/ios/rn/7488de0e3e7e8bb25ae55dc886664109a176f0e76292c60bec54b63c1dabbc03.zip", checksum: "7488de0e3e7e8bb25ae55dc886664109a176f0e76292c60bec54b63c1dabbc03"
+            url: "https://escore.co.kr/internal/ios/rn/a5c9b9029882e316ded4a0df74446aeba650fbd343d492ab749a29ce32c04b52.zip", checksum: "a5c9b9029882e316ded4a0df74446aeba650fbd343d492ab749a29ce32c04b52"
         ),
         .binaryTarget(
             name: "React_RCTFBReactNativeSpec",
-            url: "https://escore.co.kr/internal/ios/rn/80c53ee1d46ccc139ac27ca24492719435a13cea4d334694e21af175625630a8.zip", checksum: "80c53ee1d46ccc139ac27ca24492719435a13cea4d334694e21af175625630a8"
+            url: "https://escore.co.kr/internal/ios/rn/8b0bddc9b7a69f24ce75e9942d2531279f0e73bd8d2bc28d5a3386a3898ee0ce.zip", checksum: "8b0bddc9b7a69f24ce75e9942d2531279f0e73bd8d2bc28d5a3386a3898ee0ce"
         ),
         .binaryTarget(
             name: "React_RuntimeApple",
-            url: "https://escore.co.kr/internal/ios/rn/9e368a4955fcdfcb72d45e0af9cba4efa6d9ff13708ccfb94b6accf0fa9a9faf.zip", checksum: "9e368a4955fcdfcb72d45e0af9cba4efa6d9ff13708ccfb94b6accf0fa9a9faf"
+            url: "https://escore.co.kr/internal/ios/rn/2dea02f9980fa267be2188a27358d9d54a417fa94d32676d6baeef8b4ab202fe.zip", checksum: "2dea02f9980fa267be2188a27358d9d54a417fa94d32676d6baeef8b4ab202fe"
         ),
         .binaryTarget(
             name: "React_RuntimeCore",
-            url: "https://escore.co.kr/internal/ios/rn/8ed3b6a0a70f68373745abbafe6d67386e2faa115ac9bc4586e64bf8be9b153a.zip", checksum: "8ed3b6a0a70f68373745abbafe6d67386e2faa115ac9bc4586e64bf8be9b153a"
+            url: "https://escore.co.kr/internal/ios/rn/be2bb9894cd1e28e71aa05b880f8716c88c8531ad01357b4bc680174724b7ade.zip", checksum: "be2bb9894cd1e28e71aa05b880f8716c88c8531ad01357b4bc680174724b7ade"
         ),
         .binaryTarget(
             name: "React_RuntimeHermes",
-            url: "https://escore.co.kr/internal/ios/rn/e1f0db1ae4fab03c92d203909477cd37918b2b6254da8e560cd798df7efe41d9.zip", checksum: "e1f0db1ae4fab03c92d203909477cd37918b2b6254da8e560cd798df7efe41d9"
+            url: "https://escore.co.kr/internal/ios/rn/99d0ab403784be63607e4b871d2fd09874e60be9993ce925e5d6b9c1891ffad6.zip", checksum: "99d0ab403784be63607e4b871d2fd09874e60be9993ce925e5d6b9c1891ffad6"
         ),
         .binaryTarget(
             name: "React_debug",
-            url: "https://escore.co.kr/internal/ios/rn/abde1b1186a9dcf924a7f59af789ae3cb13e35dba2b51e75eedaa3a5b4c40d75.zip", checksum: "abde1b1186a9dcf924a7f59af789ae3cb13e35dba2b51e75eedaa3a5b4c40d75"
+            url: "https://escore.co.kr/internal/ios/rn/22c6cafa6a41185dd913a56cac55e2063687c79fc4a916114bc1c8d66aa7c81c.zip", checksum: "22c6cafa6a41185dd913a56cac55e2063687c79fc4a916114bc1c8d66aa7c81c"
         ),
         .binaryTarget(
             name: "React_defaultsnativemodule",
-            url: "https://escore.co.kr/internal/ios/rn/885c3f2d215539ab608931c4454db4e181b18b255a81e883a33bed34b300aec4.zip", checksum: "885c3f2d215539ab608931c4454db4e181b18b255a81e883a33bed34b300aec4"
+            url: "https://escore.co.kr/internal/ios/rn/9cf5c99aec52728ef2c8fb244c77d977affc75fd36770f6dbdbdebf6af15d6df.zip", checksum: "9cf5c99aec52728ef2c8fb244c77d977affc75fd36770f6dbdbdebf6af15d6df"
         ),
         .binaryTarget(
             name: "React_domnativemodule",
-            url: "https://escore.co.kr/internal/ios/rn/b3e9ea2ae1fb5d77492a02dcd6631924ef503be4d08817e6b964b52225c7cccb.zip", checksum: "b3e9ea2ae1fb5d77492a02dcd6631924ef503be4d08817e6b964b52225c7cccb"
+            url: "https://escore.co.kr/internal/ios/rn/d4a34fbe107fe5be69db3909bb1a739c26f1b25ea27d917aa570f63095d39606.zip", checksum: "d4a34fbe107fe5be69db3909bb1a739c26f1b25ea27d917aa570f63095d39606"
         ),
         .binaryTarget(
             name: "React_featureflags",
-            url: "https://escore.co.kr/internal/ios/rn/50589ade9499d9c6c324446f7fda9856f3d71958f94900efac5c3ee196e2f996.zip", checksum: "50589ade9499d9c6c324446f7fda9856f3d71958f94900efac5c3ee196e2f996"
+            url: "https://escore.co.kr/internal/ios/rn/9e8454f21e9b79375d7f4d81b58b05358ce6782058f4c7e1911c7b491a348f20.zip", checksum: "9e8454f21e9b79375d7f4d81b58b05358ce6782058f4c7e1911c7b491a348f20"
         ),
         .binaryTarget(
             name: "React_featureflagsnativemodule",
-            url: "https://escore.co.kr/internal/ios/rn/a67e20e8708b3c33659e1928828e07085cebafed4cea5ad9ec0ed06816679727.zip", checksum: "a67e20e8708b3c33659e1928828e07085cebafed4cea5ad9ec0ed06816679727"
+            url: "https://escore.co.kr/internal/ios/rn/26ef56440a2fffcfe32c0a17e8ab729de59aff17d4dc017c0f9745732b75fe8b.zip", checksum: "26ef56440a2fffcfe32c0a17e8ab729de59aff17d4dc017c0f9745732b75fe8b"
         ),
         .binaryTarget(
             name: "React_graphics",
-            url: "https://escore.co.kr/internal/ios/rn/595f1d81266449c93cd11123a043c2452a5457af695864e041942b274a7ab2d7.zip", checksum: "595f1d81266449c93cd11123a043c2452a5457af695864e041942b274a7ab2d7"
+            url: "https://escore.co.kr/internal/ios/rn/c421ba4918131bdb4ef5fc8e6900476f47a451c5628fbce315b9cae21a2b3dbc.zip", checksum: "c421ba4918131bdb4ef5fc8e6900476f47a451c5628fbce315b9cae21a2b3dbc"
         ),
         .binaryTarget(
             name: "React_jserrorhandler",
-            url: "https://escore.co.kr/internal/ios/rn/3a24303ee7a6c668875e3b61c194414a7c3f7ebfbae5f72769af12553e0af53c.zip", checksum: "3a24303ee7a6c668875e3b61c194414a7c3f7ebfbae5f72769af12553e0af53c"
+            url: "https://escore.co.kr/internal/ios/rn/2336381398d6a6221e8a69ebc088a9cc7f404435176a89f64394c93e6b094852.zip", checksum: "2336381398d6a6221e8a69ebc088a9cc7f404435176a89f64394c93e6b094852"
         ),
         .binaryTarget(
             name: "React_microtasksnativemodule",
-            url: "https://escore.co.kr/internal/ios/rn/a416901e8e5b911f4308db5cab86ed812c6b90c736964c07498cf45aab407560.zip", checksum: "a416901e8e5b911f4308db5cab86ed812c6b90c736964c07498cf45aab407560"
+            url: "https://escore.co.kr/internal/ios/rn/ba7f2c8ad155337113c770b39341932ac3297b661250330e522e67b8fc09fd38.zip", checksum: "ba7f2c8ad155337113c770b39341932ac3297b661250330e522e67b8fc09fd38"
         ),
         .binaryTarget(
             name: "React_networking",
-            url: "https://escore.co.kr/internal/ios/rn/ee2ab04cf2b4ad6d83e007d6442be79e13bf6284041f5ea909efaf92436e5969.zip", checksum: "ee2ab04cf2b4ad6d83e007d6442be79e13bf6284041f5ea909efaf92436e5969"
+            url: "https://escore.co.kr/internal/ios/rn/3328cb8e352a6468da1925cc2dfe01458097ad88c1fd5d6e05ecdb0d8cb413fb.zip", checksum: "3328cb8e352a6468da1925cc2dfe01458097ad88c1fd5d6e05ecdb0d8cb413fb"
         ),
         .binaryTarget(
             name: "React_performancecdpmetrics",
-            url: "https://escore.co.kr/internal/ios/rn/5eb6c8097319289414b5d4bde40a3ad64019edf8852405711e08c1535632aa49.zip", checksum: "5eb6c8097319289414b5d4bde40a3ad64019edf8852405711e08c1535632aa49"
+            url: "https://escore.co.kr/internal/ios/rn/1689b7a9d31fd44309c2a008244a6760f3e487ed89a1baad698ff71335c97cf0.zip", checksum: "1689b7a9d31fd44309c2a008244a6760f3e487ed89a1baad698ff71335c97cf0"
         ),
         .binaryTarget(
             name: "React_performancetimeline",
-            url: "https://escore.co.kr/internal/ios/rn/98103fad495e72c294cf591a3b42142d8f36e041e8058f1a05c40f60b6c1fac9.zip", checksum: "98103fad495e72c294cf591a3b42142d8f36e041e8058f1a05c40f60b6c1fac9"
+            url: "https://escore.co.kr/internal/ios/rn/586ccafbf02a6ff029ac8c37ea90726d0313dc32b690314d2ccfaa2adb666730.zip", checksum: "586ccafbf02a6ff029ac8c37ea90726d0313dc32b690314d2ccfaa2adb666730"
         ),
         .binaryTarget(
             name: "React_rendererconsistency",
-            url: "https://escore.co.kr/internal/ios/rn/5d065e94b38653bd755c07c58f3c360b0cbcf037c9f571594a3f63bd67b2da9b.zip", checksum: "5d065e94b38653bd755c07c58f3c360b0cbcf037c9f571594a3f63bd67b2da9b"
+            url: "https://escore.co.kr/internal/ios/rn/b9fcdd06ffae95debbff308878d8b241832ef96abc58af385c2af104a2e90bae.zip", checksum: "b9fcdd06ffae95debbff308878d8b241832ef96abc58af385c2af104a2e90bae"
         ),
         .binaryTarget(
             name: "React_renderercss",
-            url: "https://escore.co.kr/internal/ios/rn/b11ea0859c769662a9099cc46796f70b30019aaf275557026f7d3869b67dc388.zip", checksum: "b11ea0859c769662a9099cc46796f70b30019aaf275557026f7d3869b67dc388"
+            url: "https://escore.co.kr/internal/ios/rn/64e1151030b55a06c76489d7a600904926f75d1e0168f0b04a45b8bbb1a0727f.zip", checksum: "64e1151030b55a06c76489d7a600904926f75d1e0168f0b04a45b8bbb1a0727f"
         ),
         .binaryTarget(
             name: "React_rendererdebug",
-            url: "https://escore.co.kr/internal/ios/rn/c0d57edb710c6cc6b658f588905cfa1baf70311dadc8a946fcb851ab7e9868f1.zip", checksum: "c0d57edb710c6cc6b658f588905cfa1baf70311dadc8a946fcb851ab7e9868f1"
+            url: "https://escore.co.kr/internal/ios/rn/dd3cc7edd371ee1cf085d2974f35a65520a3b5fd326958e7b903e26baee212be.zip", checksum: "dd3cc7edd371ee1cf085d2974f35a65520a3b5fd326958e7b903e26baee212be"
         ),
         .binaryTarget(
             name: "React_runtimeexecutor",
-            url: "https://escore.co.kr/internal/ios/rn/bacaa48578db0fdace1371c35910cb32bd10142594d4c2fb80145fbf8c88bc0a.zip", checksum: "bacaa48578db0fdace1371c35910cb32bd10142594d4c2fb80145fbf8c88bc0a"
+            url: "https://escore.co.kr/internal/ios/rn/0fc4f11b4e233412e53f50e7c7a6b4835eb3e0a2290a4366c075b3ad14777bc2.zip", checksum: "0fc4f11b4e233412e53f50e7c7a6b4835eb3e0a2290a4366c075b3ad14777bc2"
         ),
         .binaryTarget(
             name: "React_runtimescheduler",
-            url: "https://escore.co.kr/internal/ios/rn/2385c7db9c018317a897f69cc2dd003f143beab93ea733fcf27a90966b2b3089.zip", checksum: "2385c7db9c018317a897f69cc2dd003f143beab93ea733fcf27a90966b2b3089"
+            url: "https://escore.co.kr/internal/ios/rn/3db406ec9eef17517c2de4ef6e40d35cf275b21220afc9af178c58c18d184e2b.zip", checksum: "3db406ec9eef17517c2de4ef6e40d35cf275b21220afc9af178c58c18d184e2b"
         ),
         .binaryTarget(
             name: "React_utils",
-            url: "https://escore.co.kr/internal/ios/rn/49dcada118a84441177abfba631b6099ce3133aaa155f057d9d6f779895056d5.zip", checksum: "49dcada118a84441177abfba631b6099ce3133aaa155f057d9d6f779895056d5"
+            url: "https://escore.co.kr/internal/ios/rn/645441e3facd1cd221aa48bbe1b0a77603987e5550b7ab30f8ff14b7f5936924.zip", checksum: "645441e3facd1cd221aa48bbe1b0a77603987e5550b7ab30f8ff14b7f5936924"
         ),
         .binaryTarget(
             name: "SocketRocket",
-            url: "https://escore.co.kr/internal/ios/rn/8448ee9f6a11d096111cb2e6695c823b468c05ff1160daeb80d61a15f46d8047.zip", checksum: "8448ee9f6a11d096111cb2e6695c823b468c05ff1160daeb80d61a15f46d8047"
+            url: "https://escore.co.kr/internal/ios/rn/06355b36b42e561ab9085e3fbb1640e9706f5ebcdacb8664f68770a7362f2d41.zip", checksum: "06355b36b42e561ab9085e3fbb1640e9706f5ebcdacb8664f68770a7362f2d41"
         ),
         .binaryTarget(
             name: "SwiftUIIntrospect",
-            url: "https://escore.co.kr/internal/ios/rn/d43cd3ff546ec82b4c8ec4d64a1b829e1c0da7a051994e163cfb3f3ea6196c4f.zip", checksum: "d43cd3ff546ec82b4c8ec4d64a1b829e1c0da7a051994e163cfb3f3ea6196c4f"
+            url: "https://escore.co.kr/internal/ios/rn/a154b16b7af67a68748eb295f39b437b7d39a92c30eda399d945a6295f9bde23.zip", checksum: "a154b16b7af67a68748eb295f39b437b7d39a92c30eda399d945a6295f9bde23"
         ),
         .binaryTarget(
             name: "UserMessagingPlatform",
-            url: "https://escore.co.kr/internal/ios/rn/94946449a0c72979b3b416b26b78b270f2862680ebade2ae7bdd22a5cbf4342e.zip", checksum: "94946449a0c72979b3b416b26b78b270f2862680ebade2ae7bdd22a5cbf4342e"
+            url: "https://escore.co.kr/internal/ios/rn/894709222dbddced2ef4edaab8c77d8e01617844f534870c0e6c3d0ef05cef76.zip", checksum: "894709222dbddced2ef4edaab8c77d8e01617844f534870c0e6c3d0ef05cef76"
         ),
         .binaryTarget(
             name: "cxxreact",
-            url: "https://escore.co.kr/internal/ios/rn/3f1b124ed65ab5bcfe262beef3fd293951e94c6f82485e6af49bf3f11cb7eae7.zip", checksum: "3f1b124ed65ab5bcfe262beef3fd293951e94c6f82485e6af49bf3f11cb7eae7"
+            url: "https://escore.co.kr/internal/ios/rn/05f4b577229bbba1a51cbacca6940de1628556d74922b94d0d0ef6a6f1ade3c5.zip", checksum: "05f4b577229bbba1a51cbacca6940de1628556d74922b94d0d0ef6a6f1ade3c5"
         ),
         .binaryTarget(
             name: "fmt",
-            url: "https://escore.co.kr/internal/ios/rn/a66d7be3aa1117b8b9c117475ee112d644bd8a26d0f865bc78fd3e30480a8738.zip", checksum: "a66d7be3aa1117b8b9c117475ee112d644bd8a26d0f865bc78fd3e30480a8738"
+            url: "https://escore.co.kr/internal/ios/rn/4659a616b3fb20002b3701bdb9f54843838cfac437b79bf216ad119f1930fe0e.zip", checksum: "4659a616b3fb20002b3701bdb9f54843838cfac437b79bf216ad119f1930fe0e"
         ),
         .binaryTarget(
             name: "folly",
-            url: "https://escore.co.kr/internal/ios/rn/5e61bb77f8e6172157a4393698c87ddb7bda9824d6ab738f8665b1fa563e7d87.zip", checksum: "5e61bb77f8e6172157a4393698c87ddb7bda9824d6ab738f8665b1fa563e7d87"
+            url: "https://escore.co.kr/internal/ios/rn/876969d1681adc07d9017fd73d61c323cf2b2961f90bde703072d9b8d7841b11.zip", checksum: "876969d1681adc07d9017fd73d61c323cf2b2961f90bde703072d9b8d7841b11"
         ),
         .binaryTarget(
             name: "glog",
-            url: "https://escore.co.kr/internal/ios/rn/bff6ce5f77297b2049777888e428e69b1b7f57d8316c39458ebd66afc2766fee.zip", checksum: "bff6ce5f77297b2049777888e428e69b1b7f57d8316c39458ebd66afc2766fee"
+            url: "https://escore.co.kr/internal/ios/rn/0243820cc7040d5f66a09b3a308d61e4aaa76ed98a5b8627da8091e47ef9a9f7.zip", checksum: "0243820cc7040d5f66a09b3a308d61e4aaa76ed98a5b8627da8091e47ef9a9f7"
         ),
         .binaryTarget(
             name: "hermesvm",
-            url: "https://escore.co.kr/internal/ios/rn/2bd39d832ac07dde6931cf0543abc225ddd1e392a1e7ae13d5c4d4e3f6e58f0d.zip", checksum: "2bd39d832ac07dde6931cf0543abc225ddd1e392a1e7ae13d5c4d4e3f6e58f0d"
+            url: "https://escore.co.kr/internal/ios/rn/cfeec89d50dd4d05f70ec088fecc8db907a64ec4b79880e020ce5dd26982c065.zip", checksum: "cfeec89d50dd4d05f70ec088fecc8db907a64ec4b79880e020ce5dd26982c065"
         ),
         .binaryTarget(
             name: "idlecallbacksnativemodule",
-            url: "https://escore.co.kr/internal/ios/rn/04e6eaf23d074b46a5e3d01465cfd60962d4a655dc02c93089209e3989d3be05.zip", checksum: "04e6eaf23d074b46a5e3d01465cfd60962d4a655dc02c93089209e3989d3be05"
+            url: "https://escore.co.kr/internal/ios/rn/f1f5a1be763847bb68f396cbb1d91a2553579216b37756a4c23fe6822c083b68.zip", checksum: "f1f5a1be763847bb68f396cbb1d91a2553579216b37756a4c23fe6822c083b68"
         ),
         .binaryTarget(
             name: "intersectionobservernativemodule",
-            url: "https://escore.co.kr/internal/ios/rn/a634d4e78d32ad3564076f93918cb691f955ab4541ba1fe5301124fb3baf57e6.zip", checksum: "a634d4e78d32ad3564076f93918cb691f955ab4541ba1fe5301124fb3baf57e6"
+            url: "https://escore.co.kr/internal/ios/rn/257c61ab0e8b51e676d4b7e3caf68524b6aecb1fc967a361212f5c23049f1330.zip", checksum: "257c61ab0e8b51e676d4b7e3caf68524b6aecb1fc967a361212f5c23049f1330"
         ),
         .binaryTarget(
             name: "jsi",
-            url: "https://escore.co.kr/internal/ios/rn/b628f94a7db238290d1374aacd4b9de5b1a58870b78519e10bed15da431d483e.zip", checksum: "b628f94a7db238290d1374aacd4b9de5b1a58870b78519e10bed15da431d483e"
+            url: "https://escore.co.kr/internal/ios/rn/6e09945bb062a20b717f82164b7c73dbe15bef9b0af53e42d251defa26a47a87.zip", checksum: "6e09945bb062a20b717f82164b7c73dbe15bef9b0af53e42d251defa26a47a87"
         ),
         .binaryTarget(
             name: "jsinspector_modern",
-            url: "https://escore.co.kr/internal/ios/rn/6ab839d80dcc5397b85854ab0806752b848ca87d053e3a7c74e7a4e93c961976.zip", checksum: "6ab839d80dcc5397b85854ab0806752b848ca87d053e3a7c74e7a4e93c961976"
+            url: "https://escore.co.kr/internal/ios/rn/9879f36e409988519edd2624834589340bc89bb2bd358cc74f08490f5f3f1c1b.zip", checksum: "9879f36e409988519edd2624834589340bc89bb2bd358cc74f08490f5f3f1c1b"
         ),
         .binaryTarget(
             name: "jsinspector_moderncdp",
-            url: "https://escore.co.kr/internal/ios/rn/853005dc06b739d891a763f5c4b9edb93bcae9ec2f279f666fcacdf6756db7e7.zip", checksum: "853005dc06b739d891a763f5c4b9edb93bcae9ec2f279f666fcacdf6756db7e7"
+            url: "https://escore.co.kr/internal/ios/rn/5dcec8e846aa78c79d8c93c813b1a2478b1cfd242b0d579ddb07b8c80cbfa092.zip", checksum: "5dcec8e846aa78c79d8c93c813b1a2478b1cfd242b0d579ddb07b8c80cbfa092"
         ),
         .binaryTarget(
             name: "jsinspector_modernnetwork",
-            url: "https://escore.co.kr/internal/ios/rn/70d4112d9f36f28b088e160dc45e8b37968f7a4bc826a8342840986f0c02203a.zip", checksum: "70d4112d9f36f28b088e160dc45e8b37968f7a4bc826a8342840986f0c02203a"
+            url: "https://escore.co.kr/internal/ios/rn/d7a128b8d7667c8f64e26b155c24a7f0024b4e605657a47ddc12ed758ff4fb6b.zip", checksum: "d7a128b8d7667c8f64e26b155c24a7f0024b4e605657a47ddc12ed758ff4fb6b"
         ),
         .binaryTarget(
             name: "jsinspector_moderntracing",
-            url: "https://escore.co.kr/internal/ios/rn/6e69e6413f32e9b686cc01a28d7f3a0e2cc963031577d4a6fa48ebf17fb32865.zip", checksum: "6e69e6413f32e9b686cc01a28d7f3a0e2cc963031577d4a6fa48ebf17fb32865"
+            url: "https://escore.co.kr/internal/ios/rn/8aa1f9c68001ae6d5d7e86c16e8660c3355d0750828aab651686d15f4bc79f23.zip", checksum: "8aa1f9c68001ae6d5d7e86c16e8660c3355d0750828aab651686d15f4bc79f23"
         ),
         .binaryTarget(
             name: "jsireact",
-            url: "https://escore.co.kr/internal/ios/rn/e5e5d4b5b3034aec67e8234aadd6b968565acda31861a1038260e8846007aeeb.zip", checksum: "e5e5d4b5b3034aec67e8234aadd6b968565acda31861a1038260e8846007aeeb"
-        ),
-        .binaryTarget(
-            name: "libavif",
-            url: "https://escore.co.kr/internal/ios/rn/12b57758a83c18e98e500c7b7184b5dff542e8ea8e485e3042ba132d7fa5946c.zip", checksum: "12b57758a83c18e98e500c7b7184b5dff542e8ea8e485e3042ba132d7fa5946c"
+            url: "https://escore.co.kr/internal/ios/rn/3a8cd19fb072090e6c2bd6dcc3e2918d196aaa6356a013af645fd918f09b863c.zip", checksum: "3a8cd19fb072090e6c2bd6dcc3e2918d196aaa6356a013af645fd918f09b863c"
         ),
         .binaryTarget(
             name: "libdav1d",
-            url: "https://escore.co.kr/internal/ios/rn/7ff9f4289c88f11a2faea1d5513fe72a408bf93f45bd17fcd11db0c9c629ab73.zip", checksum: "7ff9f4289c88f11a2faea1d5513fe72a408bf93f45bd17fcd11db0c9c629ab73"
-        ),
-        .binaryTarget(
-            name: "libwebp",
-            url: "https://escore.co.kr/internal/ios/rn/657e03fa085b71e60995fa1ba90c4b988c213214c8adc58113c9bf57d8343d6f.zip", checksum: "657e03fa085b71e60995fa1ba90c4b988c213214c8adc58113c9bf57d8343d6f"
+            url: "https://escore.co.kr/internal/ios/rn/37ff63099a41d2acce10a778db8fbcbc88259a0cff337ae4385204685695c13f.zip", checksum: "37ff63099a41d2acce10a778db8fbcbc88259a0cff337ae4385204685695c13f"
         ),
         .binaryTarget(
             name: "logger",
-            url: "https://escore.co.kr/internal/ios/rn/bf582b3e24998a238d5d179feae6227e5b17fecbb0850363eca4c61961efbc0d.zip", checksum: "bf582b3e24998a238d5d179feae6227e5b17fecbb0850363eca4c61961efbc0d"
+            url: "https://escore.co.kr/internal/ios/rn/43c1fc48cb8cb24c291b9dc7dade7349ddd534d08eaba1d4778a9c96e067f0f9.zip", checksum: "43c1fc48cb8cb24c291b9dc7dade7349ddd534d08eaba1d4778a9c96e067f0f9"
         ),
         .binaryTarget(
             name: "oscompat",
-            url: "https://escore.co.kr/internal/ios/rn/49c859c21c8512804480339cd28ab156cc7f72f2d6c9bfb173cc086051812182.zip", checksum: "49c859c21c8512804480339cd28ab156cc7f72f2d6c9bfb173cc086051812182"
+            url: "https://escore.co.kr/internal/ios/rn/4d6e3b44a3a389402568647db70184ba5ae76d43e62c441c79c714c76e17ab3d.zip", checksum: "4d6e3b44a3a389402568647db70184ba5ae76d43e62c441c79c714c76e17ab3d"
         ),
         .binaryTarget(
             name: "react_native_keyboard_controller",
-            url: "https://escore.co.kr/internal/ios/rn/d35c464eda27a9dd35839064aa28a41917c251f2f33237965b896075810a8ad4.zip", checksum: "d35c464eda27a9dd35839064aa28a41917c251f2f33237965b896075810a8ad4"
+            url: "https://escore.co.kr/internal/ios/rn/e0804a9ab216349727eea911c5a27cdb30d7747391050803bb7535095b38a4ae.zip", checksum: "e0804a9ab216349727eea911c5a27cdb30d7747391050803bb7535095b38a4ae"
         ),
         .binaryTarget(
             name: "react_native_pager_view",
-            url: "https://escore.co.kr/internal/ios/rn/58768d0ed0e2d650439a18e01a0da3d5f083cc3ea8e16912464445b7194eb797.zip", checksum: "58768d0ed0e2d650439a18e01a0da3d5f083cc3ea8e16912464445b7194eb797"
+            url: "https://escore.co.kr/internal/ios/rn/cec896a14c156337c3de21aed6def6e835656b1717edde475514e3655ff1660b.zip", checksum: "cec896a14c156337c3de21aed6def6e835656b1717edde475514e3655ff1660b"
         ),
         .binaryTarget(
             name: "react_native_safe_area_context",
-            url: "https://escore.co.kr/internal/ios/rn/722599c25cef383c47ba1ed5aa8add88288fb6d0d01cf9aa87aec5f519efa05a.zip", checksum: "722599c25cef383c47ba1ed5aa8add88288fb6d0d01cf9aa87aec5f519efa05a"
+            url: "https://escore.co.kr/internal/ios/rn/2dcbf57b59c1cad377591fc68d74e1759cd893fa310ef799a5c513c53ef43a07.zip", checksum: "2dcbf57b59c1cad377591fc68d74e1759cd893fa310ef799a5c513c53ef43a07"
         ),
         .binaryTarget(
             name: "react_native_sqlite_storage",
-            url: "https://escore.co.kr/internal/ios/rn/ba1af83905f44f6109bfb2a8ef6069b967d3c3994b9f237642d38425902d0e2c.zip", checksum: "ba1af83905f44f6109bfb2a8ef6069b967d3c3994b9f237642d38425902d0e2c"
+            url: "https://escore.co.kr/internal/ios/rn/fb5fe39fd284f10304d1febeab89d25fae7584412b60f15f132e225c725bac43.zip", checksum: "fb5fe39fd284f10304d1febeab89d25fae7584412b60f15f132e225c725bac43"
         ),
         .binaryTarget(
             name: "react_native_webview",
-            url: "https://escore.co.kr/internal/ios/rn/0c22c4b7dd6324254daeebc44ee855219deec508bf145b232d4f1869a2367e5f.zip", checksum: "0c22c4b7dd6324254daeebc44ee855219deec508bf145b232d4f1869a2367e5f"
+            url: "https://escore.co.kr/internal/ios/rn/b1efac127c005475e32d2aacc6df5953909042ec05a457c79ebe0cc8ec20b699.zip", checksum: "b1efac127c005475e32d2aacc6df5953909042ec05a457c79ebe0cc8ec20b699"
         ),
         .binaryTarget(
             name: "reacthermes",
-            url: "https://escore.co.kr/internal/ios/rn/4c221ca614581042ebe4e27628d1156155c04c52235827d5ee934a7723b908f6.zip", checksum: "4c221ca614581042ebe4e27628d1156155c04c52235827d5ee934a7723b908f6"
+            url: "https://escore.co.kr/internal/ios/rn/d0d7ed41852d28c5b0bf08ab9cac15636a9ab9b38a805a60e23a4b16a8d0189e.zip", checksum: "d0d7ed41852d28c5b0bf08ab9cac15636a9ab9b38a805a60e23a4b16a8d0189e"
         ),
         .binaryTarget(
             name: "reactperflogger",
-            url: "https://escore.co.kr/internal/ios/rn/9d22bcb274ad8831f63a98a7fdcd58ffcf7651a64572f967f021983d9d24178c.zip", checksum: "9d22bcb274ad8831f63a98a7fdcd58ffcf7651a64572f967f021983d9d24178c"
+            url: "https://escore.co.kr/internal/ios/rn/63d68763930ca130e7a575629144e8796d836f7145bf5bb98cc6a7fb8e593d5c.zip", checksum: "63d68763930ca130e7a575629144e8796d836f7145bf5bb98cc6a7fb8e593d5c"
         ),
         .binaryTarget(
             name: "webperformancenativemodule",
-            url: "https://escore.co.kr/internal/ios/rn/ab40fdfd882222ce26103d926257b98001fd6711abf6d1c372022d2679aa90c2.zip", checksum: "ab40fdfd882222ce26103d926257b98001fd6711abf6d1c372022d2679aa90c2"
+            url: "https://escore.co.kr/internal/ios/rn/8cc9273aefd9fea96838d44c50530314161e8c37dd4525bd08a4416977a1fe0a.zip", checksum: "8cc9273aefd9fea96838d44c50530314161e8c37dd4525bd08a4416977a1fe0a"
         ),
         .binaryTarget(
             name: "yoga",
-            url: "https://escore.co.kr/internal/ios/rn/82f882bccf27aa3dc1666a5e3baca16bd47e48b2d908bc9ef66ccc54f12e7985.zip", checksum: "82f882bccf27aa3dc1666a5e3baca16bd47e48b2d908bc9ef66ccc54f12e7985"
+            url: "https://escore.co.kr/internal/ios/rn/8ca8ef5de27fe257846adaacdc5f9b8451ffeb8b3197f2ed3dcc899641aba733.zip", checksum: "8ca8ef5de27fe257846adaacdc5f9b8451ffeb8b3197f2ed3dcc899641aba733"
         )
     ]
 )
