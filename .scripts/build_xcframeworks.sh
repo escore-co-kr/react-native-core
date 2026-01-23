@@ -68,6 +68,29 @@ function copyCommonFramworks() {
     echo "Copying $framework to $dest"
     cp -R "$framework" "$dest"
   done
+
+  OVERRIDES_DIR="$SRCROOT/../.scripts/overrides"
+  DEST_DIR="$SRCROOT/Frameworks"
+
+  find "$OVERRIDES_DIR" -type f -name "*.xcframework.zip" | while read -r zipfile; do
+    name=$(basename "$zipfile" .zip)            # Something.xcframework
+    framework_path="$DEST_DIR/$name"
+
+    echo "Processing $zipfile"
+
+    # 1. 기존 프레임워크 제거 (캐시/충돌 방지)
+    if [ -d "$framework_path" ]; then
+      echo "Removing existing $framework_path"
+      rm -rf "$framework_path"
+    fi
+
+    # 2. unzip
+    echo "Unzipping to $DEST_DIR"
+    unzip -o "$zipfile" -d "$DEST_DIR"
+
+    echo "$name installed"
+  done
+  ls -la $DEST_DIR
 }
 
 function clean() {
