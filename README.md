@@ -1,7 +1,7 @@
 # 📦 Prebuild SPM Project::Release
 ### PLATFORM_HASH
 ```
-373090cec8ea376acfa2bd2cd1d706da0dd62dfa505e01c511015cea40dbd343
+e464bfa8a38ca1bec607faf5050dc215d6c374f98ffffa270dc82551aa8da77f
 ```
 
 ### RN 라이브러리 버전
@@ -10,7 +10,6 @@
 |------------|-------|
 | `react-native` | 0.83.1 |
 | `react` | 19.2.3 |
-| `@d11/react-native-fast-image` | ^8.13.0 |
 | `@react-native-async-storage/async-storage` | 2.2.0 |
 | `@react-navigation/native` | 7.1.28 |
 | `@tanstack/react-query` | 5.90.19 |
