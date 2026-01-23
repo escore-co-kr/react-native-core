@@ -8,6 +8,8 @@ const EXCLUDED = new Set([
     "SDWebImageAVIFCoder",
     "SDWebImageSVGCoder",
     "SDWebImageWebPCoder",
+    "libavif",
+    "libwebp",
 ]);
 
 function firstExisting(paths) {
