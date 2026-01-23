@@ -69,8 +69,8 @@ find "$XCFRAMEWORKS_DIR" -maxdepth 1 -type d -name "*.xcframework" -print0 | whi
       echo "Skipping signed vendor framework: $FW_PATH"
       continue
     fi
-    if /usr/bin/codesign --verify --strict --verbose=1 "$FW_PATH" >/dev/null 2>&1; then
-      echo "Already signed, skipping: $FW_PATH"
+    if [[ "$FW_PATH" != *"SDWebImage"* ]]; then
+      echo "Skipping non-SDWebImage framework: $FW_PATH"
       continue
     fi
     echo "PATCH Sign (force): $(basename "$FW_PATH")"
