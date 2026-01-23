@@ -5,6 +5,7 @@ set -euo pipefail
 export SRCROOT=$(pwd)
 export WORKSPACE=ReactNativePrebuild
 export PROJECT="Pods-$WORKSPACE"
+EXCLUDE_FRAMEWORKS=("SDWebImage" "SDWebImageAVIFCoder" "SDWebImageSVGCoder" "SDWebImageWebPCoder")
 
 # SDKS=("iphoneos" "iphonesimulator" "macosx" "xros" "xrosimulator" "watchos" "watchsimulator" "appletvos" "appletvsimulator")
 SDKS=("iphoneos" "iphonesimulator")
@@ -36,6 +37,10 @@ function create_xcframework() {
     do
       basename=$(basename $framework)
       framework_name=$(basename $framework .framework)
+      if [[ " ${EXCLUDE_FRAMEWORKS[*]} " == *" ${framework_name} "* ]]; then
+        echo "Skipping xcframework build for excluded framework: $framework_name"
+        continue
+      fi
       echo "create_xcframework=$framework_name"
 
       XCFRAMEWORK_CMD="xcodebuild -create-xcframework"
@@ -65,6 +70,11 @@ function copyCommonFramworks() {
   # RN의 경우 hermes가 xcframework만 제공해서 복붙했는데 그 외 케이스가 있어서 Pods에서 일괄 복붙
   find "$SRCROOT/Pods" -type d -name "*.xcframework" | while read -r framework; do
     dest="$SRCROOT/Frameworks/$(basename "$framework")"
+    name=$(basename "$framework" .xcframework)
+    if [[ " ${EXCLUDE_FRAMEWORKS[*]} " == *" ${name} "* ]]; then
+      echo "Skipping copy for excluded framework: $name"
+      continue
+    fi
     echo "Copying $framework to $dest"
     cp -R "$framework" "$dest"
   done
