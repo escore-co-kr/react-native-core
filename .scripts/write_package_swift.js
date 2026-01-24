@@ -58,18 +58,10 @@ const sdwebimageFallbacks = {
     SDWebImageWebPCoder: "0.15.0",
 };
 
-const sdwebimagePackages = {
-    SDWebImage: { url: "https://github.com/SDWebImage/SDWebImage.git", version: getPodVersion("SDWebImage", sdwebimageFallbacks.SDWebImage) },
-    SDWebImageAVIFCoder: { url: "https://github.com/SDWebImage/SDWebImageAVIFCoder.git", version: getPodVersion("SDWebImageAVIFCoder", sdwebimageFallbacks.SDWebImageAVIFCoder) },
-    SDWebImageSVGCoder: { url: "https://github.com/SDWebImage/SDWebImageSVGCoder.git", version: getPodVersion("SDWebImageSVGCoder", sdwebimageFallbacks.SDWebImageSVGCoder) },
-    SDWebImageWebPCoder: { url: "https://github.com/SDWebImage/SDWebImageWebPCoder.git", version: getPodVersion("SDWebImageWebPCoder", sdwebimageFallbacks.SDWebImageWebPCoder) },
-};
-
-const sdwebimagePackageDecls = Object.values(sdwebimagePackages).map(
-    ({ url, version }) => `        .package(url: "${url}", from: "${version}")`
-).join(",\n");
-
-const sdwebimageTargets = Object.keys(sdwebimagePackages);
+// SDWebImage is statically linked via RNFastImage; no SPM dependency to avoid dynamic linkage.
+const sdwebimagePackages = {};
+const sdwebimagePackageDecls = "";
+const sdwebimageTargets = [];
 
 const package = `// swift-tools-version:5.6
 import PackageDescription

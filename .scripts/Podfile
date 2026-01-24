@@ -19,7 +19,7 @@ $RNGoogleMobileAdsAsStaticFramework = true
 
 target 'PROJECT' do
   # use_frameworks! :linkage => :static
-  use_frameworks!
+  use_frameworks! :linkage => :static
   config = use_native_modules!
 
   use_react_native!(
