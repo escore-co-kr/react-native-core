@@ -1,4 +1,4 @@
-# 📦 Prebuild SPM Project::Release
+# 📦 Prebuild SPM Project::Debug
 ### PLATFORM_HASH
 ```
 373090cec8ea376acfa2bd2cd1d706da0dd62dfa505e01c511015cea40dbd343
