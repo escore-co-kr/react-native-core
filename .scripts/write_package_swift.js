@@ -4,12 +4,6 @@ const path = require('path');
 const project = "ReactNativePrebuild";
 
 const EXCLUDED = new Set([
-    "SDWebImage",
-    "SDWebImageAVIFCoder",
-    "SDWebImageSVGCoder",
-    "SDWebImageWebPCoder",
-    "libavif",
-    "libwebp",
 ]);
 
 function firstExisting(paths) {
@@ -58,7 +52,6 @@ const sdwebimageFallbacks = {
     SDWebImageWebPCoder: "0.15.0",
 };
 
-// SDWebImage is statically linked via RNFastImage; no SPM dependency to avoid dynamic linkage.
 const sdwebimagePackages = {};
 const sdwebimagePackageDecls = "";
 const sdwebimageTargets = [];
