@@ -29,10 +29,6 @@ ${process.env.PLATFORM_HASH}
 ${list.map(({ key, version }) => `| \`${key}\` | ${version} |`).join("\n")}
 ---
 
-### RCTThirdPartyComponentsProvider.mm
-\`\`\`swift
-${fs.readFileSync(path.join(__dirname, "../ios/build/generated/ios/RCTThirdPartyComponentsProvider.mm"))}
-\`\`\`
 `;
 
 fs.writeFileSync(path.join(__dirname, "../README.md"), text);

@@ -46,6 +46,7 @@ node -e "
 cd ios
 ruby create_project.rb
 ./build_xcframeworks.sh
+# ../.scripts/sign_frameworks.sh
 # cd ..
 # node .scripts/cp_framework_sources.js
 
