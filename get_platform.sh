@@ -20,11 +20,10 @@ getPlatformHash() {
             console.error(nativeDeps);
 
             const hash = crypto.createHash("sha256").update(JSON.stringify(nativeDeps)).digest("hex");
-            if (hash == "81183a27c3f0911962fc659bc907be9a6dd1aba474a18e30da900237e6518ac6") {
-                console.log("7790a3ca64cc5e2f35a1555f06110b3a9758f8d0023aa022999d3fcb7cdf67c6");
-            } else {
-                console.log(hash);
-            }
+            console.log({
+                "81183a27c3f0911962fc659bc907be9a6dd1aba474a18e30da900237e6518ac6": "7790a3ca64cc5e2f35a1555f06110b3a9758f8d0023aa022999d3fcb7cdf67c6",
+                "cda9154f56828946c79ac7abbdea65a5b776c0a1357b60799529a0369335048a": "373090cec8ea376acfa2bd2cd1d706da0dd62dfa505e01c511015cea40dbd343",
+            }[hash] ?? hash);
         });
     ';
 }
